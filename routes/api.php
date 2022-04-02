@@ -1,11 +1,10 @@
 <?php
 
-use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PostController;
-use App\Http\Controllers\CommentController;
-use App\Http\Controllers\LikeController;
+use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\NewsFeedController;
+use App\Http\Controllers\API\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,28 +18,28 @@ use App\Http\Controllers\LikeController;
 */
 
 
+Route::post('/register',[AuthController::class,'register']);
+Route::post('/login',[AuthController::class,'login']);
+Route::get('/singlePost', [NewsFeedController::class,'single']);
+
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return $request->user();
+});
 
 
-
-
-// Public routes
-Route::post('/register', [AuthController::class, 'register']);
-Route::post('/login', [AuthController::class, 'login']);
-
-// Protected Routes
 Route::group(['middleware' => ['auth:sanctum']], function() {
 
     // User
     Route::get('/user', [AuthController::class, 'user']);
-    Route::put('/user', [AuthController::class, 'update']);
+    Route::post('/profile', [AuthController::class, 'update_profile']);
     Route::post('/logout', [AuthController::class, 'logout']);
 
     // Post
-    Route::get('/posts', [PostController::class, 'index']); // all posts
-    Route::post('/posts', [PostController::class, 'store']); // create post
-    Route::get('/posts/{id}', [PostController::class, 'show']); // get single post
-    Route::put('/posts/{id}', [PostController::class, 'update']); // update post
-    Route::delete('/posts/{id}', [PostController::class, 'destroy']); // delete post
+    Route::get('/posts', [NewsFeedController::class, 'index']); // all posts
+    Route::post('/posts', [NewsFeedController::class, 'store']); // create post
+    Route::get('/posts/{id}', [NewsFeedController::class, 'show']); // get single post
+    Route::put('/posts/{id}', [NewsFeedController::class, 'update']); // update post
+    Route::delete('/posts/{id}', [NewsFeedController::class, 'destroy']); // delete post
 
     // Comment
     Route::get('/posts/{id}/comments', [CommentController::class, 'index']); // all comments of a post
@@ -49,5 +48,5 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
     Route::delete('/comments/{id}', [CommentController::class, 'destroy']); // delete a comment
 
     // Like
-    Route::post('/posts/{id}/likes', [LikeController::class, 'likeOrUnlike']); // like or dislike back a post
+    Route::post('/posts/{id}/likes', [NewsFeedController::class, 'likeOrUnlike']); // like or dislike back a post
 });

@@ -10,7 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, HasApiTokens;
+    use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'profile_photo'
     ];
 
     /**
@@ -41,4 +42,25 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public $appends=[
+        'profile_image_url',
+    ];
+
+
+
+
+    public function getProfileImageUrlAttribute(){
+        if($this->profile_photo){
+            return asset('/uploads/profile_images/'.$this->profile_photo);
+        }else{
+            return 'https://ui-avatars.com/api/?background=random&name='.urlencode($this->name);
+        }
+
+    }
+
+
+
+
+
+
 }

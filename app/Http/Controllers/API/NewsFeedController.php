@@ -1,27 +1,27 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
+use App\Http\Controllers\Controller;
+use App\Models\Like;
 use Illuminate\Http\Request;
-use App\Models\User;
 use App\Models\Post;
 
-class PostController extends Controller
+class NewsFeedController extends Controller
 {
-    // get all posts
+
+
     public function index()
     {
         return response([
-            'posts' => Post::orderBy('created_at', 'desc')->with('user:id,name,image')->withCount('comments', 'likes')
-            ->with('likes', function($like){
-                return $like->where('user_id', auth()->user()->id)
-                    ->select('id', 'user_id', 'post_id')->get();
-            })
-            ->get()
+            'posts' => Post::orderBy('created_at', 'desc')->with('user:id,name,profile_photo')->withCount('comments', 'likes')
+                ->with('likes', function ($like) {
+                    return $like->where('user_id', auth()->user()->id)
+                        ->select('id', 'user_id', 'post_id')->get();
+                })
+                ->get()
         ], 200);
     }
-
-    // get single post
     public function show($id)
     {
         return response([
@@ -29,20 +29,24 @@ class PostController extends Controller
         ], 200);
     }
 
-    // create a post
+
     public function store(Request $request)
     {
         //validate fields
         $attrs = $request->validate([
-            'body' => 'required|string'
+            'body' => 'required|string',
+            'image' => 'required|image|mimes:jpg,bmp,png'
         ]);
 
-        $image = $this->saveImage($request->image, 'posts');
+
+        $image_name = time() . '.' . $request->image->extension();
+        $request->image->move(public_path('/uploads/posts_images'), $image_name);
 
         $post = Post::create([
             'body' => $attrs['body'],
             'user_id' => auth()->user()->id,
-            'image' => $image
+            'image' => $image_name,
+
         ]);
 
         // for now skip for post image
@@ -53,20 +57,17 @@ class PostController extends Controller
         ], 200);
     }
 
-    // update a post
     public function update(Request $request, $id)
     {
         $post = Post::find($id);
 
-        if(!$post)
-        {
+        if (!$post) {
             return response([
                 'message' => 'Post not found.'
             ], 403);
         }
 
-        if($post->user_id != auth()->user()->id)
-        {
+        if ($post->user_id != auth()->user()->id) {
             return response([
                 'message' => 'Permission denied.'
             ], 403);
@@ -89,20 +90,19 @@ class PostController extends Controller
         ], 200);
     }
 
-    //delete post
+
+
     public function destroy($id)
     {
         $post = Post::find($id);
 
-        if(!$post)
-        {
+        if (!$post) {
             return response([
                 'message' => 'Post not found.'
             ], 403);
         }
 
-        if($post->user_id != auth()->user()->id)
-        {
+        if ($post->user_id != auth()->user()->id) {
             return response([
                 'message' => 'Permission denied.'
             ], 403);
@@ -115,5 +115,46 @@ class PostController extends Controller
         return response([
             'message' => 'Post deleted.'
         ], 200);
+    }
+
+    // like or unlike
+    public function likeOrUnlike($id)
+    {
+        $post = Post::find($id);
+
+        if (!$post) {
+            return response([
+                'message' => 'Post not found.'
+            ], 403);
+        }
+
+        $like = $post->likes()->where('user_id', auth()->user()->id)->first();
+
+        // if not liked then like
+        if (!$like) {
+            Like::create([
+                'post_id' => $id,
+                'user_id' => auth()->user()->id
+            ]);
+
+            return response([
+                'message' => 'Liked'
+            ], 200);
+        }
+        // else dislike it
+        $like->delete();
+
+        return response([
+            'message' => 'Disliked'
+        ], 200);
+    }
+
+    public function single(){
+
+
+        return response([
+
+            "posts"=>Post::all()
+        ]);
     }
 }

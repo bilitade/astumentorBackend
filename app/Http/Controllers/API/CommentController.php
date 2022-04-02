@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
-use Illuminate\Http\Request;
-use App\Models\Post;
+use App\Http\Controllers\Controller;
 use App\Models\Comment;
+use App\Models\Post;
+use Illuminate\Http\Request;
 
 class CommentController extends Controller
 {
@@ -21,7 +22,7 @@ class CommentController extends Controller
         }
 
         return response([
-            'comments' => $post->comments()->with('user:id,name,image')->get()
+            'comments' => $post->comments()->with('user:id,name,profile_photo')->get()
         ], 200);
     }
 
