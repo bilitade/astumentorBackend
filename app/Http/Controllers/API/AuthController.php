@@ -41,11 +41,13 @@ class AuthController extends Controller
                 ['rounds' => 12]
             )
         ]);
+        $token = $user->createToken('auth-token')->plainTextToken;
 
 
         return response()->json([
             'message' => 'Registration successfull',
-            'user' => $user
+            'user' => $user,
+            'token'=>$token
         ], 200);
     }
 
@@ -108,6 +110,8 @@ class AuthController extends Controller
         return response()->json([
             'message'=>'User successfully logged out',
         ],200);
+
+
     }
 
 

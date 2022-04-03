@@ -53,7 +53,10 @@ class User extends Authenticatable
         if($this->profile_photo){
             return asset('/uploads/profile_images/'.$this->profile_photo);
         }else{
-            return 'https://ui-avatars.com/api/?background=random&name='.urlencode($this->name);
+            return "https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?f=y";
+
+
+            // 'https://ui-avatars.com/api/?background=random&name='.urlencode($this->name);
         }
 
     }
