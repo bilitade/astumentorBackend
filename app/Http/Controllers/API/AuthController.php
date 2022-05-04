@@ -86,13 +86,13 @@ class AuthController extends Controller
             else {
                 return response()->json([
                     'message' => 'Incorrect credentials',
-                ], 400);
+                ], 403);
             }
         } else {
 
             return response()->json([
                 'message' => 'Incorrect credentials',
-            ], 400);
+            ], 403);
         }
     }
 

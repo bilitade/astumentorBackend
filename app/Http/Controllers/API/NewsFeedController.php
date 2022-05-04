@@ -35,7 +35,7 @@ class NewsFeedController extends Controller
         //validate fields
         $attrs = $request->validate([
             'body' => 'required|string',
-            'image' => 'required|image|mimes:jpg,bmp,png'
+            'image' => 'required|mimes:jpg,bmp,png'
         ]);
 
 

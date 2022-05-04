@@ -78,8 +78,11 @@
         <div class="nav-right col pull-right right-menu p-0">
           <ul class="nav-menus">
             <li><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>
-
+            @auth()
             <li class="onhover-dropdown">
+
+
+
               <div class="notification-box"> <img class="img-30 rounded-circle" src="{{asset('uploads/profile_images/'.Auth::user()->profile_photo)}}" alt=""></div>
               <ul class="notification-dropdown onhover-show-div">
                 <li>
@@ -102,6 +105,7 @@
                 </li>
               </ul>
             </li>
+            @endauth
             <li>
               <div class="mode"><i class="fa fa-moon-o"></i></div>
             </li>
