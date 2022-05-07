@@ -97,7 +97,7 @@
                                     <li class="nav-item menu-back">back<i class="fa fa-angle-right"></i></li>
                                     <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#tour">Tour</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#demo">Curriculm </a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{{route('curriculm')}}">Curriculm </a></li>
                                     <li class="nav-item"><a class="nav-link" href="#demo">Rule And Regulations </a></li>
 
                                 </ul>

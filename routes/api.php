@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\NewsFeedController;
 use App\Http\Controllers\API\CommentController;
+use App\Http\Controllers\API\Curriculum\Course;
+use App\Http\Controllers\API\Curriculum\CourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +19,7 @@ use App\Http\Controllers\API\CommentController;
 |
 */
 
-
+Route::get('school/{id}',[CourseController::class, 'schoolcourse']);
 Route::post('/register',[AuthController::class,'register']);
 Route::post('/login',[AuthController::class,'login']);
 Route::get('/singlePost', [NewsFeedController::class,'single']);

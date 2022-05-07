@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\API\Curriculum\CurriculumController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/curriculm', [CurriculumController::class, 'schools'])->name('curriculm');
+Route::get('/curriculm/school/{id}', [CurriculumController::class, 'schoolCourse'])->name('school');
+Route::get('/curriculm/department/{id}', [CurriculumController::class, 'departmentCourse'])->name('department');
+
+
+
