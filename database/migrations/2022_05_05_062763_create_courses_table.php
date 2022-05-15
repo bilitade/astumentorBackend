@@ -19,7 +19,9 @@ return new class extends Migration
             $table->string("courseName");
             $table->unsignedSmallInteger("creditHour");
             $table->longText('description');
-            $table->string("type");
+            $table->string('type_id');
+            $table->foreign('type_id')->references('id')->on('types');
+
             $table->unsignedBigInteger('school_id')->nullable();
             $table->foreign('school_id')->references('id')->on('schools');
 

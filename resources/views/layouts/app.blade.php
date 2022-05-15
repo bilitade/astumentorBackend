@@ -59,13 +59,13 @@
     <div class="page-main-header">
       <div class="main-header-right row m-0">
         <div class="main-header-left">
-          <div class="logo-wrapper"><a href="index.html"><img class="img-fluid" style="max-width:115px"
-            src="../assets/images/logos.svg" alt=""></div>
-          <div class="dark-logo-wrapper"><a href="index.html"><img class="img-fluid" src="../assets/images/logo/dark-logo.png" alt=""></a></div>
+          <div class="logo-wrapper"><a href="/"><img class="img-fluid" style="max-width:115px"
+            src="{{asset('assets/images/logos.svg')}}" alt=""></div>
+          <div class="dark-logo-wrapper"><a href="/"><img class="img-fluid" src="{{asset('assets/images/logos.svg')}}" alt=""></a></div>
           <div class="toggle-sidebar"><i class="status_toggle middle" data-feather="align-center" id="sidebar-toggle"></i></div>
         </div>
         <div class="left-menu-header col">
-          <ul>
+          {{-- <ul>
             <li>
               <form class="form-inline search-form">
                 <div class="search-bg"><i class="fa fa-search"></i>
@@ -73,7 +73,7 @@
                 </div>
               </form><span class="d-sm-none mobile-search search-bg"><i class="fa fa-search"></i></span>
             </li>
-          </ul>
+          </ul> --}}
         </div>
         <div class="nav-right col pull-right right-menu p-0">
           <ul class="nav-menus">
@@ -106,9 +106,9 @@
               </ul>
             </li>
             @endauth
-            <li>
+            {{-- <li>
               <div class="mode"><i class="fa fa-moon-o"></i></div>
-            </li>
+            </li> --}}
 
 
           </ul>
@@ -136,7 +136,7 @@
     <script src="{{asset("assets/js/icons/feather-icon/feather.min.js")}}"></script>
     <script src="{{asset("assets/js/icons/feather-icon/feather-icon.js")}}"></script>
     <!-- Sidebar jquery-->
-    <script src=" {{asset("assets/js/sidebar-menu.js")}}../assets/js/sidebar-menu.js"></script>
+    <script src=" {{asset("assets/js/sidebar-menu.js")}}"></script>
     <script src=" {{asset("assets/js/config.js")}} "></script>
     <!-- Bootstrap js-->
     <script src="{{asset('assets/js/bootstrap/popper.min.js')}}"></script>
@@ -144,7 +144,7 @@
     <!-- Plugins JS start-->
     <!-- Plugins JS Ends-->
     <!-- Theme js-->
-    <script src="../assets/js/script.js"></script>
+    <script src="{{asset('assets/js/script.js')}}"></script>
     <!-- login js-->
     <!-- Plugin used-->
 

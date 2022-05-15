@@ -2,13 +2,16 @@
 
 namespace App\Models\curriculum;
 
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Scout\Searchable;
+use App\Models\curriculum\Type;
 
 class Course extends Model
 {
 
-    use HasFactory;
+    use HasFactory,Searchable ;
 
     public function school(){
         return $this->belongsTo(School::class);
@@ -26,6 +29,21 @@ class Course extends Model
         return $this->belongsTo(Year::class);
     }
 
+    public function type(){
+
+        return $this->hasOne(Type::class);
+    }
 
 
+
+    public function toSearchableArray()
+    {
+        return [
+            'id' => $this->id,
+            'courseCode' => $this->courseCode,
+              'courseName'=>$this->courseName
+
+
+        ];
+    }
 }

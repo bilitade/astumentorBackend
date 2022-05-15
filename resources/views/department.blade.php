@@ -11,6 +11,7 @@
             <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="/">Home</a></li>
               <li class="breadcrumb-item"><a href="{{route('curriculm')}}">Curriculum</a></li>
+              <li class="breadcrumb-item"><a href="{{ url()->previous() }}">School</a></li>
               <li class="breadcrumb-item"><a href="#">{{$department->name}}</a></li>
 
             </ol>
@@ -26,12 +27,13 @@
 
            @endif
 
-              <h3 class="text-center text-primary" >Computer Science and Engineering  </h3>
+              <h3 class="text-center text-primary" >{{$department->title}}  </h3>
             <h6 class="text-center">Description</h6>
-            <p class="text-justify text-wrap">The Computer Science and Engineering major at ASTU is structured in a way that supports the study of both theoretical and engineering aspects of computers.  It finds balance between breadth and depth to provide a solid foundation in the basic science and mathematics on one hand, and comprehensive exposure to societal issues, professionalism, and leadership skills on the other. \n Students are guided to pursue their interest in computer science and engineering by studying the fundamental science and the application of engineering concepts, techniques, and methods to both computer systems engineering and software system design through major required courses such as data structures, discrete mathematics, algorithms, object-oriented programming, programming languages, fundamental of electrical engineering, etc. followed by tailored individual education through the selection of major elective courses. The general  unrestricted elective option provide context with significant background in one or more of the  natural sciences and other engineering disciplines. <br> Every senior student is required to undertake a research project under the guidance of a senior academic advisor. Students are encouraged to participate in an independent research supporting the ongoing researches or projects in the school.
+            <p class=" text-wrap">
+                {{$department->description}}
             </p>
             <h6 class="text-center">Objective</h6>
-            <p class="text-justify text-wrap">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release .</p>
+            <p class="text-justify text-wrap">{{$department->objective}}</p>
 
         <div class="row">
 
@@ -59,7 +61,7 @@
                           <td>{{$it->courseCode}}</td>
                           <td>{{$it->courseName}}</td>
                           <td>{{$it->creditHour}}</td>
-                          <td>{{$it->type}}</td>
+                          <td>{{$it->type_id}}</td>
                         </tr>
 
                  @endforeach

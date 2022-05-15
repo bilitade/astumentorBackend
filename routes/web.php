@@ -25,6 +25,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/curriculm', [CurriculumController::class, 'schools'])->name('curriculm');
 Route::get('/curriculm/school/{id}', [CurriculumController::class, 'schoolCourse'])->name('school');
 Route::get('/curriculm/department/{id}', [CurriculumController::class, 'departmentCourse'])->name('department');
+Route::get('/courses', [CurriculumController::class, 'courses'])->name('course');
+Route::get('/courses/{id}', [CurriculumController::class, 'course'])->name('single-course');
 
 
 

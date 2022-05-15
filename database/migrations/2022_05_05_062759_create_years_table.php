@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('id', 36)->primary();
             $table->string("name");
             $table->unsignedSmallInteger("yearInNum");
+            $table->timestamps();
             // $table->unsignedBigInteger('school_id')->nullable();
             // $table->foreign('school_id')->references('id')->on('schools');
             // $table->unsignedBigInteger('department_id')->nullable();

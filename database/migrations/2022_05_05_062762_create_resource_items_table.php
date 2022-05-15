@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string("uploadeBy");
             $table->unsignedBigInteger('resource_id')->nullable();
             $table->foreign('resource_id')->references('id')->on('resources');
-
             $table->timestamps();
         });
     }

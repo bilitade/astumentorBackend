@@ -64,15 +64,41 @@ class CurriculumController extends Controller
 
 
 
-        // return response()->json([
-        //    'Department'=>$school,
-        //    'courses'=>$grouped,
 
-        // ], 200);
 
 
         return view('department')->with(['department'=>$department, 'grouped'=>$grouped]);
     }
+
+
+ public function  courses( Request $request){
+
+    if($request->filled('search')){
+        $courses = Course::search($request->search)->get();
+    }else{
+        $courses = Course::get();
+    }
+
+    return view('courses', compact('courses'));
+
+
+
+
+ }
+
+
+
+public function course($id){
+
+
+$course=Course::find($id);
+
+return view('course')->with('course',$course);
+
+
+
+}
+
 
 
 
