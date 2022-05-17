@@ -1,6 +1,6 @@
-@extends('layouts.app')
+@extends('public.app')
 
-@section('content')
+@section('contents')
 
 <div class="container m-auto">
     <div style="margin-top: 15vh" class="row justify-content-center">

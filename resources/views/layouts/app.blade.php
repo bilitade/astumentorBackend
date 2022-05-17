@@ -106,9 +106,6 @@
               </ul>
             </li>
             @endauth
-            {{-- <li>
-              <div class="mode"><i class="fa fa-moon-o"></i></div>
-            </li> --}}
 
 
           </ul>

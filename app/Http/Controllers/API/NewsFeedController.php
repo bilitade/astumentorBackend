@@ -148,13 +148,15 @@ class NewsFeedController extends Controller
             'message' => 'Disliked'
         ], 200);
     }
+    
 
-    public function single(){
+    public function single()
+    {
 
 
         return response([
 
-            "posts"=>Post::all()
+            "posts" => Post::all()
         ]);
     }
 }

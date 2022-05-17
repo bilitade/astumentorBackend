@@ -19,7 +19,7 @@ class CurriculumController extends Controller
     $schools=School::all();
 
     // dd($schools);
-    return view('curriculum')->with('schools', $schools);
+    return view('public.curriculum')->with('schools', $schools);
  }
 
 
@@ -49,7 +49,7 @@ class CurriculumController extends Controller
 
 
 
-        return view('school')->with(['school'=>$school, 'depts'=>$depts, 'grouped'=>$grouped]);
+        return view('public.school')->with(['school'=>$school, 'depts'=>$depts, 'grouped'=>$grouped]);
     }
 
     public function  departmentCourse($id)
@@ -67,7 +67,7 @@ class CurriculumController extends Controller
 
 
 
-        return view('department')->with(['department'=>$department, 'grouped'=>$grouped]);
+        return view('public.department')->with(['department'=>$department, 'grouped'=>$grouped]);
     }
 
 
@@ -79,7 +79,7 @@ class CurriculumController extends Controller
         $courses = Course::get();
     }
 
-    return view('courses', compact('courses'));
+    return view('public.courses', compact('courses'));
 
 
 
@@ -93,7 +93,7 @@ public function course($id){
 
 $course=Course::find($id);
 
-return view('course')->with('course',$course);
+return view('public.course')->with('course',$course);
 
 
 

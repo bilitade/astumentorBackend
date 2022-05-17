@@ -16,7 +16,10 @@ use App\Http\Controllers\API\Curriculum\CurriculumController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('public.welcome');
+});
+Route::get('/tour', function () {
+    return view('public.tour');
 });
 
 Auth::routes();

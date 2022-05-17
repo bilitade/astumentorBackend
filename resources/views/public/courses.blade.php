@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('public.app')
 
-@section('content')
+@section('contents')
 
 <div class="container m-auto">
     <div style="margin-top: 15vh" class="row justify-content-center">
-        <a href="{{route('curriculm')}}" class="btn btn-primary  w-25">Curriculum</a>
+    
         <form  method="GET">
             <div class="input-group mt-3 w-75 m-auto">
 

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('group_id')->nullable();
             $table->string('body');
             $table->string('image')->nullable();
 
@@ -23,6 +24,12 @@ return new class extends Migration
             ->references('id')
             ->on('users')
             ->onDelete('cascade');
+
+            $table->foreign('group_id')
+            ->references('id')
+            ->on('groups')
+            ->onDelete('cascade');
+
 
 
             $table->timestamps();

@@ -135,7 +135,7 @@
                     <button class="btn btn-primary btn-block d-block w-100" type="submit">Register</button></div>
 
 
-                <p>Already have account?<a class="ms-2"href="{{ route('login') }}">Create Account</a></p>
+                <p>Already have account?<a class="ms-2"href="{{ route('login') }}">Login Here</a></p>
               </form>
             </div>
           </div>
