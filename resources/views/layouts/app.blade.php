@@ -77,7 +77,7 @@
         </div>
         <div class="nav-right col pull-right right-menu p-0">
           <ul class="nav-menus">
-            <li><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>
+         
             @auth()
             <li class="onhover-dropdown">
 

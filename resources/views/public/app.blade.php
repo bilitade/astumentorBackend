@@ -63,7 +63,7 @@
                                     <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                                     <li class="nav-item"><a class="nav-link" href="/tour">Tour</a></li>
                                     <li class="nav-item"><a class="nav-link" href="{{route('curriculm')}}">Curriculm </a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#demo">Rule And Regulations </a></li>
+                                    <li class="nav-item"><a class="nav-link" href="{{route('course')}}">Courses</a></li>
 
                                 </ul>
                                 <div>
@@ -101,7 +101,7 @@
 
 
 
-     
+
         </div>
 
     </div>
