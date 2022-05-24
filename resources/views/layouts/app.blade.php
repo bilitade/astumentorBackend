@@ -77,13 +77,28 @@
         </div>
         <div class="nav-right col pull-right right-menu p-0">
           <ul class="nav-menus">
-         
+
             @auth()
+
+
+
+                <li class="add-to-bookmark">
+
+                    <a  href="{{route('messages')}}" >
+                        <i class="bookmark-icon" data-feather="inbox"></i>
+                        @include('messenger.unread-count')
+                        <span class="visually-hidden">unread messages</span>
+                    </a>
+
+
+
+                </span>
+
             <li class="onhover-dropdown">
 
 
 
-              <div class="notification-box"> <img class="img-30 rounded-circle" src="{{asset('uploads/profile_images/'.Auth::user()->profile_photo)}}" alt=""></div>
+              <div class="notification-box"> <img class="img-30 rounded-circle" src="{{asset('uploads/profile_images/'.Auth::user()->profile_photo)}}"onerror="this.onerror=null;this.src='{{asset('imgs/noprofile.png')}}';"  alt=""/></div>
               <ul class="notification-dropdown onhover-show-div">
                 <li>
                   <p class=" mb-0 text-center">  {{ Auth::user()->name }}</p>
@@ -114,14 +129,116 @@
       </div>
     </div>
     <!-- Page Header Ends-->
-<div>
-  <main class="py-4 m-4">
+
+    <div class="page-body-wrapper sidebar-icon">
+        <!-- Page Sidebar Start-->
+        <header class="main-nav">
+          <div class="sidebar-user text-center"><a class="setting-primary" href="javascript:void(0)"><i data-feather="settings"></i></a><img class="img-90 rounded-circle" src="../assets/images/dashboard/1.png" alt="">
+            <div class="badge-bottom"><span class="badge badge-primary">New</span></div><a href="user-profile.html">
+              <h6 class="mt-3 f-14 f-w-600">{{Auth::user()->name}}</h6></a>
+            <p class="mb-0 font-roboto">Role :Admin </p>
+          
+          </div>
+          <nav>
+            <div class="main-navbar">
+              <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
+              <div id="mainnav">
+                <ul class="nav-menu custom-scrollbar">
+                  <li class="back-btn">
+                    <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
+                  </li>
+                  <li class="sidebar-main-title">
+                    <div>
+                      <h6>General             </h6>
+                    </div>
+                  </li>
+                  <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="inbox"></i><span>Messages</span></a>
+                    <ul class="nav-submenu menu-content">
+                        <li><a href="{{route('messages')}}">All Messages</a></li>
+                      <li><a href="{{route('messages.create')}}">Write Message</a></li>
+
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="airplay"></i><span>Widgets</span></a>
+                    <ul class="nav-submenu menu-content">
+                      <li><a href="general-widget.html">General</a></li>
+                      <li><a href="chart-widget.html">Chart</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="layout"></i><span>Page layout</span></a>
 
 
 
-        @yield('content')
+                  <li class="dropdown"><a class="nav-link menu-title link-nav" href="jsgrid-table.html"><i data-feather="file-text"></i><span>Js Grid Table</span></a></li>
+                  <li class="sidebar-main-title">
+                    <div>
+                      <h6>Applications             </h6>
+                    </div>
+                  </li>
+                  <li class="dropdown">          <a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="box"></i><span>Project                </span></a>
+                    <ul class="nav-submenu menu-content">
+                      <li><a href="projects.html">Project List</a></li>
+                      <li><a href="projectcreate.html">Create new             </a></li>
+                    </ul>
+                  </li>
 
-    </main>
+                  <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="shopping-bag"></i><span>Ecommerce</span></a>
+                    <ul class="nav-submenu menu-content">
+                      <li><a href="product.html">Product</a></li>
+                      <li><a href="product-page.html">Product page</a></li>
+                      <li><a href="list-products.html">Product list</a></li>
+                      <li><a href="payment-details.html">Payment Details</a></li>
+                      <li><a href="order-history.html">Order History</a></li>
+                      <li><a href="invoice-template.html">Invoice</a></li>
+                      <li><a href="cart.html">Cart</a></li>
+                      <li><a href="list-wish.html">Wishlist</a></li>
+                      <li><a href="checkout.html">Checkout</a></li>
+                      <li><a href="pricing.html">Pricing</a></li>
+                    </ul>
+                  </li>
+
+
+
+
+
+
+              </div>
+              <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
+            </div>
+          </nav>
+        </header>
+        <!-- Page Sidebar Ends-->
+        <div class="page-body">
+          <!-- Container-fluid starts-->
+          <div class="container-fluid dashboard-default-sec">
+
+
+
+
+
+                @yield('content')
+
+
+
+        </div>
+        <!-- footer start-->
+
+      </div>
+
+      <footer class="footer mt-auto text-center">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-6 footer-copyright">
+              <p class="mb-0">Copyright 2022 © ASTU MENTOR</p>
+            </div>
+
+          </div>
+        </div>
+      </footer>
+
+
+
+    <div>
 
 </div>
 

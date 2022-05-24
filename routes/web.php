@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\API\Curriculum\CurriculumController;
+use App\Http\Controllers\MessagesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,18 @@ Route::get('/courses/{id}', [CurriculumController::class, 'course'])->name('sing
 
 
 
+// Route::group(['prefix' => 'messages'], function () {
+//     Route::get('/',  [MessagesController::class , 'index'])->name('messages');
+//     Route::get('create', [MessagesController::class ,'create'])->name('messages.create');
+//     Route::post('/', [MessagesController::class,'store'])->name('messages.store');
+//     Route::get('{id}', [MessagesController::class ,'show'])->name('messages.store');
+//     Route::put('{id}', [MessagesController::class ,'update'])->name('messages.update');
+// });
+
+Route::group(['prefix' => 'messages'], function () {
+    Route::get('/', ['as' => 'messages', 'uses' => 'App\Http\Controllers\MessagesController@index']);
+    Route::get('create', ['as' => 'messages.create', 'uses' => 'App\Http\Controllers\MessagesController@create']);
+    Route::post('/', ['as' => 'messages.store', 'uses' => 'App\Http\Controllers\MessagesController@store']);
+    Route::get('{id}', ['as' => 'messages.show', 'uses' => 'App\Http\Controllers\MessagesController@show']);
+    Route::put('{id}', ['as' => 'messages.update', 'uses' => 'App\Http\Controllers\MessagesController@update']);
+});

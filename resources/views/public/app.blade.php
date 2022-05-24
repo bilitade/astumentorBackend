@@ -17,6 +17,9 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css" />
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+
+      @yield('head')
+
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/fontawesome.css')}}">
     <!-- ico-font-->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/icofont.css')}}">
@@ -55,8 +58,8 @@
                 <div class="custom-container">
                     <div class="row">
                         <div class="col-12">
-                            <nav class="navbar navbar-light p-0" id="navbar-example2"><a class="navbar-brand"
-                                    href="javascript:void(0)"> <img class="img-fluid" style="max-width:115px"
+                            <nav class="navbar navbar-light p-0 sticky-top " id="navbar-example2"><a class="navbar-brand"
+                                    href="/"> <img class="img-fluid" style="max-width:115px"
                                         src="{{asset('assets/images/logos.svg')}}" alt=""></a>
                                 <ul class="landing-menu nav nav-pills">
                                     <li class="nav-item menu-back">back<i class="fa fa-angle-right"></i></li>
@@ -90,6 +93,11 @@
                     </div>
                 </div>
             </header>
+
+
+
+
+            
             <section class="landing-home section-pb-space" id="home"><img class="img-fluid bg-img-cover">
                 @yield('contents')
             </section>

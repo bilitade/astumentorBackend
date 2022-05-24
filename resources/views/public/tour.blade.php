@@ -6,15 +6,15 @@
     <div class="row">
         <div class="col-12 col-lg-8 mt-3">
 
-                <div class="card text-center bg-primary m-2">
+                <div class="card  bg-primary m-2">
 
                     <div class="card-header text-secondary border-radius">
-                         <h4> Panorama Tour</h4>
+                         <h4 class="text-center"> Panorama Tour</h4>
                     </div>
 
                     <div class="card-body">
 
-                        <div id="panorama" style="max-width: 100%; height:65vh ;   border-radius: 10px; "
+                        <div id="panorama" style="max-width: 100%; height:70vh ;   border-radius: 10px; "
                             class="m-auto">
                         </div>
                         <script>
@@ -1291,12 +1291,12 @@
                 <div class="card text-center bg-primary m-2">
 
                     <div class="card-header text-secondary border-radius">
-                         <h4>Google Map</h4>
+                         <h4  class="text-center">Google Map</h4>
                     </div>
 
                     <div class="card-body">
 
-                        <div id="googleMap" style="width:100%; min-height: 65vh;">
+                        <div id="googleMap" style="width:100%; min-height: 70vh;">
                         </div>
 
                         <script>
