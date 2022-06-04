@@ -1,26 +1,31 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Like;
-use Illuminate\Http\Request;
+ use Illuminate\Http\Request;
+ use Illuminate\Support\Facades\File;
+
 use App\Models\Post;
 
-class NewsFeedController extends Controller
+class WebNewsFeedController extends Controller
 {
 
 
     public function index()
     {
-        return response([
-            'posts' => Post::orderBy('created_at', 'desc')->with('user:id,name,profile_photo')->withCount('comments', 'likes')
-                ->with('likes', function ($like) {
-                    return $like->where('user_id', auth()->user()->id)
-                        ->select('id', 'user_id', 'post_id')->get();
-                })
-                ->get()
-        ], 200);
+        $posts=Post::where('group_id',"=",null)->orderBy('created_at', 'desc')->with('user:id,name,profile_photo')->withCount('comments', 'likes')
+        ->with('likes', function ($like) {
+            return $like->where('user_id', auth()->user()->id)
+                ->select('id', 'user_id', 'post_id')->get();
+        })
+        ->get();
+        // dd($posts);
+        return view('private.newsfeed')->with('posts', $posts);
+
+
+
     }
     public function show($id)
     {
@@ -32,29 +37,40 @@ class NewsFeedController extends Controller
 
     public function store(Request $request)
     {
-        //validate fields
-        $attrs = $request->validate([
+
+
+        //  dd($request);
+
+
+        $validated = $request->validate([
             'body' => 'required|string',
-            'image' => 'required|mimes:jpg,bmp,png'
+            'image'=>'image|mimes:jpeg,jpg,png,bmp,gif,svg',
         ]);
+        //validate fields
 
 
+
+ $image_name="";
+        if ($request->hasFile('image')) {
         $image_name = time() . '.' . $request->image->extension();
         $request->image->move(public_path('/uploads/posts_images'), $image_name);
+        }
 
         $post = Post::create([
-            'body' => $attrs['body'],
+            'body' => $validated['body'],
             'user_id' => auth()->user()->id,
             'image' => $image_name,
 
         ]);
 
-        // for now skip for post image
+        // // for now skip for post image
 
-        return response([
-            'message' => 'Post created.',
-            'post' => $post,
-        ], 200);
+        // return response([
+        //     'message' => 'Post created.',
+        //     'post' => $post,
+        // ], 200);
+
+    return redirect()->back();
     }
 
     public function update(Request $request, $id)
@@ -92,40 +108,36 @@ class NewsFeedController extends Controller
 
 
 
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $post = Post::find($id);
 
-        if (!$post) {
-            return response([
-                'message' => 'Post not found.'
-            ], 403);
+
+
+        $id = $request->id;
+        $post = Post::findOrFail($id);
+        $image_path = "uploads/product_image/" . $post->image;
+        if (File::exists($image_path)) {
+            //File::delete($image_path);
+            File::delete($image_path);
         }
-
-        if ($post->user_id != auth()->user()->id) {
-            return response([
-                'message' => 'Permission denied.'
-            ], 403);
-        }
-
-        $post->comments()->delete();
-        $post->likes()->delete();
         $post->delete();
-
-        return response([
-            'message' => 'Post deleted.'
-        ], 200);
+        return back()->with('success', 'Post Deleted.');
     }
+
 
     // like or unlike
     public function likeOrUnlike($id)
     {
         $post = Post::find($id);
 
+
+
         if (!$post) {
-            return response([
-                'message' => 'Post not found.'
-            ], 403);
+
+            return back()->with('error', 'Post  Not Found.');
+            // return response([
+            //     'message' => 'Post not found.'
+            // ], 403);
         }
 
         $like = $post->likes()->where('user_id', auth()->user()->id)->first();
@@ -137,16 +149,12 @@ class NewsFeedController extends Controller
                 'user_id' => auth()->user()->id
             ]);
 
-            return response([
-                'message' => 'Liked'
-            ], 200);
+            return redirect()->back();
         }
         // else dislike it
         $like->delete();
 
-        return response([
-            'message' => 'Disliked'
-        ], 200);
+        return redirect()->back();
     }
 
 
@@ -159,4 +167,8 @@ class NewsFeedController extends Controller
             "posts" => Post::all()
         ]);
     }
+
+
+
+   
 }

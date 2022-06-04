@@ -8,10 +8,11 @@ use Cmgmyr\Messenger\Models\Message;
 use Cmgmyr\Messenger\Models\Participant;
 use Cmgmyr\Messenger\Models\Thread;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Request as Req;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Models\User;
+use Illuminate\Http\Request;
 
 
 class MessagesController extends Controller
@@ -68,9 +69,22 @@ class MessagesController extends Controller
      *
      * @return mixed
      */
-    public function create()
+    public function create(Request $request)
+
     {
-        $users = User::where('id', '!=', Auth::id())->get();
+
+        if($request->filled('search')){
+            $users = User::search($request->search)->get();
+
+        }
+
+        else{
+            $users = User::get()->take('5');
+        }
+
+
+
+        // $users = User::where('id', '!=', Auth::id())->get();
 
         return view('messenger.create', compact('users'));
     }
@@ -82,7 +96,7 @@ class MessagesController extends Controller
      */
     public function store()
     {
-        $input = Request::all();
+        $input = Req::all();
 
         $thread = Thread::create([
             'subject' => $input['subject'],
@@ -103,7 +117,7 @@ class MessagesController extends Controller
         ]);
 
         // Recipients
-        if (Request::has('recipients')) {
+        if (Req::has('recipients')) {
             $thread->addParticipant($input['recipients']);
         }
 
@@ -132,7 +146,7 @@ class MessagesController extends Controller
         Message::create([
             'thread_id' => $thread->id,
             'user_id' => Auth::id(),
-            'body' => Request::input('message'),
+            'body' => Req::input('message'),
         ]);
 
         // Add replier as a participant
@@ -144,8 +158,8 @@ class MessagesController extends Controller
         $participant->save();
 
         // Recipients
-        if (Request::has('recipients')) {
-            $thread->addParticipant(Request::input('recipients'));
+        if (Req::has('recipients')) {
+            $thread->addParticipant(Req::input('recipients'));
         }
 
         return redirect()->route('messages.show', $id);

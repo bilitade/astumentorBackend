@@ -8,11 +8,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Laravel\Scout\Searchable;
+
 use Cmgmyr\Messenger\Traits\Messagable;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable, Messagable;
+    use HasApiTokens, HasFactory, Notifiable, Messagable, Searchable;
 
     /**
      * The attributes that are mass assignable.
@@ -70,7 +72,12 @@ class User extends Authenticatable
         return $this->belongsToMany(Group::class, 'group_user');
     }
 
-
-
+    public function toSearchableArray()
+    {
+        return [
+            'name' => $this->name,
+            'email' => $this->email
+        ];
+    }
 
 }

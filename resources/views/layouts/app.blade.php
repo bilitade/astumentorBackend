@@ -16,6 +16,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/fontawesome.css')}}">
     <!-- ico-font-->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/icofont.css')}}">
@@ -40,8 +41,14 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/responsive.css')}}">
 
 
+    <script src="{{asset("assets/js/jquery-3.5.1.min.js")}}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js"></script>
+    <script src="{{asset('js/events.js')}}"></script>
 
-    <!-- Styles -->
+
+
 
 </head>
 <body>
@@ -98,7 +105,7 @@
 
 
 
-              <div class="notification-box"> <img class="img-30 rounded-circle" src="{{asset('uploads/profile_images/'.Auth::user()->profile_photo)}}"onerror="this.onerror=null;this.src='{{asset('imgs/noprofile.png')}}';"  alt=""/></div>
+              <div class="notification-box"> <img class="img-30 rounded-circle" src="{{Avatar::create(Auth::user()->name)->toBase64() }}"  alt=""/></div>
               <ul class="notification-dropdown onhover-show-div">
                 <li>
                   <p class=" mb-0 text-center">  {{ Auth::user()->name }}</p>
@@ -133,11 +140,11 @@
     <div class="page-body-wrapper sidebar-icon">
         <!-- Page Sidebar Start-->
         <header class="main-nav">
-          <div class="sidebar-user text-center"><a class="setting-primary" href="javascript:void(0)"><i data-feather="settings"></i></a><img class="img-90 rounded-circle" src="../assets/images/dashboard/1.png" alt="">
-            <div class="badge-bottom"><span class="badge badge-primary">New</span></div><a href="user-profile.html">
+          <div class="sidebar-user text-center"><a class="setting-primary" href="javascript:void(0)"><i data-feather="settings"></i></a><img class="img-90 rounded-circle" src="{{Avatar::create(Auth::user()->name)->toBase64() }}" alt="">
+            <div class="badge-bottom"><span class="badge badge-primary">Student</span></div><a href="user-profile.html">
               <h6 class="mt-3 f-14 f-w-600">{{Auth::user()->name}}</h6></a>
-            <p class="mb-0 font-roboto">Role :Admin </p>
-          
+
+
           </div>
           <nav>
             <div class="main-navbar">
@@ -148,9 +155,7 @@
                     <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
                   </li>
                   <li class="sidebar-main-title">
-                    <div>
-                      <h6>General             </h6>
-                    </div>
+                   <hr>
                   </li>
                   <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="inbox"></i><span>Messages</span></a>
                     <ul class="nav-submenu menu-content">
@@ -159,43 +164,19 @@
 
                     </ul>
                   </li>
-                  <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="airplay"></i><span>Widgets</span></a>
-                    <ul class="nav-submenu menu-content">
-                      <li><a href="general-widget.html">General</a></li>
-                      <li><a href="chart-widget.html">Chart</a></li>
-                    </ul>
+                  <li class="dropdown"><a class="nav-link menu-title link-nav" href="/newsfeed"><i data-feather="layout"></i><span>NewsFeeds</span></a>
+
                   </li>
-                  <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="layout"></i><span>Page layout</span></a>
+             
 
 
 
-                  <li class="dropdown"><a class="nav-link menu-title link-nav" href="jsgrid-table.html"><i data-feather="file-text"></i><span>Js Grid Table</span></a></li>
+                  <li class="dropdown"><a class="nav-link menu-title link-nav" href="{{route('calenderEvent')}}" ><i data-feather="file-text"></i><span>Events</span></a></li>
                   <li class="sidebar-main-title">
-                    <div>
-                      <h6>Applications             </h6>
-                    </div>
+                   <hr>
                   </li>
-                  <li class="dropdown">          <a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="box"></i><span>Project                </span></a>
-                    <ul class="nav-submenu menu-content">
-                      <li><a href="projects.html">Project List</a></li>
-                      <li><a href="projectcreate.html">Create new             </a></li>
-                    </ul>
-                  </li>
+                
 
-                  <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="shopping-bag"></i><span>Ecommerce</span></a>
-                    <ul class="nav-submenu menu-content">
-                      <li><a href="product.html">Product</a></li>
-                      <li><a href="product-page.html">Product page</a></li>
-                      <li><a href="list-products.html">Product list</a></li>
-                      <li><a href="payment-details.html">Payment Details</a></li>
-                      <li><a href="order-history.html">Order History</a></li>
-                      <li><a href="invoice-template.html">Invoice</a></li>
-                      <li><a href="cart.html">Cart</a></li>
-                      <li><a href="list-wish.html">Wishlist</a></li>
-                      <li><a href="checkout.html">Checkout</a></li>
-                      <li><a href="pricing.html">Pricing</a></li>
-                    </ul>
-                  </li>
 
 
 
@@ -225,7 +206,7 @@
 
       </div>
 
-      <footer class="footer mt-auto text-center">
+      <footer class="footer text-center fixed-bottom">
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-6 footer-copyright">
@@ -240,12 +221,12 @@
 
     <div>
 
-</div>
+
 
 
     <!-- page-wrapper end-->
     <!-- latest jquery-->
-    <script src="{{asset("assets/js/jquery-3.5.1.min.js")}}"></script>
+
     <!-- feather icon js-->
     <script src="{{asset("assets/js/icons/feather-icon/feather.min.js")}}"></script>
     <script src="{{asset("assets/js/icons/feather-icon/feather-icon.js")}}"></script>
@@ -256,87 +237,18 @@
     <script src="{{asset('assets/js/bootstrap/popper.min.js')}}"></script>
     <script src="{{asset('assets/js/bootstrap/bootstrap.min.js')}}"></script>
     <!-- Plugins JS start-->
+    <script src="{{asset('assets/js/tooltip-init.js')}}"></script>
     <!-- Plugins JS Ends-->
     <!-- Theme js-->
     <script src="{{asset('assets/js/script.js')}}"></script>
+
     <!-- login js-->
+
     <!-- Plugin used-->
 
 
 
-
-
-
-
-
-
-
-
-
-
-    {{-- <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a style=" font-family: 'Lato', sans-serif;
-                font-weight:bolder" class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <main class="py-4">
-
-
-
-            @yield('content')
-
-        </main>
-    </div> --}}
 </body>
+
+
 </html>

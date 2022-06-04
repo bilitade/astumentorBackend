@@ -25,7 +25,10 @@
                                     "sceneFadeDuration": 1000,
                                     "autoRotate": -8,
                                     "autoLoad": true
+                                    
+
                                 },
+
 
                                 "scenes": {
 

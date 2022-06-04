@@ -4,7 +4,9 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\API\Curriculum\CurriculumController;
 use App\Http\Controllers\MessagesController;
-
+use App\Http\Controllers\WebNewsFeedController;
+use App\Http\Controllers\WebCommentController;
+use App\Http\Controllers\FullCalenderController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -49,3 +51,15 @@ Route::group(['prefix' => 'messages'], function () {
     Route::get('{id}', ['as' => 'messages.show', 'uses' => 'App\Http\Controllers\MessagesController@show']);
     Route::put('{id}', ['as' => 'messages.update', 'uses' => 'App\Http\Controllers\MessagesController@update']);
 });
+
+Route::resource('newsfeed',WebNewsFeedController::class);
+Route::post('newsfeed/{id}/likes', [WebNewsFeedController::class, 'likeOrUnlike'])->name('likes'); // like or dislike back a post
+
+Route::get('/newsfeed/{id}/comments', [WebCommentController::class, 'index'])->name('newsfeed.comments'); // all comments of a post
+Route::post('/newsfeed/{id}/comments', [WebCommentController::class, 'store'])->name('newsfeed.comments.store'); // create comment on a post
+    // Route::put('/comments/{id}', [CommentController::class, 'update']); // update a comment
+Route::delete('/comments/{id}', [WebCommentController::class, 'destroy']); // delete a comment
+Route::get('full-calender', [FullCalenderController::class, 'index'])->name("calenderEvent");
+
+Route::post('full-calender/action', [FullCalenderController::class, 'action']);
+
