@@ -3,7 +3,7 @@
 @section('contents')
 
 
-                <div class="custom-container mt-4 pt-4">
+                <div class="custom-container  pt-4">
                     <div class="row">
                         <div class="col-12 col-lg-7 p-4">
 
@@ -26,15 +26,16 @@
 
                         </div>
                     </div>
-                        <h1 class=" ml-4"> Available on</h1>
-                     <div class="row">
-                         <div class="col-3 text-center">
-                             <a href="" > <i style="font-size: 10.0rem" class=" fa fa-android shadow-2xl"> </i></a>
-                             
+
+                     <div class="row w-50 m-auto">
+                        <h3 class="ml-4"> Also Available on</h3>
+                         <div class="col-3 ">
+                             <a href="" > <i style="font-size: 5.0rem" class=" fa fa-android shadow-2xl"> </i></a>
+
                          </div>
-                         <div class="col-3 text-center">
-                            <a href="" > <i style="font-size: 10.0rem" class=" fa fa-apple  shadow-2xl"> </i></a>
-                            
+                         <div class="col-3 ">
+                            <a href="" > <i style="font-size: 5.0rem" class=" fa fa-apple  shadow-2xl"> </i></a>
+
                         </div>
                      </div>
                 </div>

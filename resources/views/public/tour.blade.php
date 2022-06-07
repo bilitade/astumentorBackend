@@ -2,11 +2,11 @@
 @section('contents')
 
 {{-- imgs/pano/pano5.jpg --}}
-<div style="margin-top: 4vh">
+<div style="">
     <div class="row">
-        <div class="col-12 col-lg-8 mt-3">
+        <div class="col-12 col-lg-8 ">
 
-                <div class="card  bg-primary m-2">
+                <div class="card  bg-primary ">
 
                     <div class="card-header text-secondary border-radius">
                          <h4 class="text-center"> Panorama Tour</h4>
@@ -25,7 +25,7 @@
                                     "sceneFadeDuration": 1000,
                                     "autoRotate": -8,
                                     "autoLoad": true
-                                    
+
 
                                 },
 
@@ -870,7 +870,7 @@
                                     },
 
                                     "gedagate": {
-                                        "title": " new Hall building",
+                                        "title": " Geda Gate",
                                         "hfov": 110,
                                         "yaw": 88,
                                         "type": "equirectangular",
@@ -1282,16 +1282,10 @@
 
                     </div>
                 </div>
-
-
-
-
-
         </div>
 
-        <div class="col-12  col-lg-4 mt-3">
-
-                <div class="card text-center bg-primary m-2">
+        <div class="col-12  col-lg-4 ">
+                <div class="card text-center bg-primary ">
 
                     <div class="card-header text-secondary border-radius">
                          <h4  class="text-center">Google Map</h4>

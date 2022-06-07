@@ -2,7 +2,7 @@
 
 @section('contents')
 <div class="container m-auto">
-    <div style="margin-top: 8vh" class="row justify-content-center">
+    <div style="margin-top: 5vh " class="row justify-content-center p-4 m-4">
 
 
            @if (!empty($school))
@@ -28,9 +28,9 @@
 
               <h3 class="text-center text-primary" >{{$school->title}}</h3>
             <h6 class="text-center">Description</h6>
-            <p class="text-justify text-wrap">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            <p class="text-justify text-wrap  font-weight-bold">{!!$school->description!!}</p>
             <h6 class="text-center">Objective</h6>
-            <p class="text-justify text-wrap">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release .</p>
+            <p class="text-justify text-wrap">{!!$school->vm!!}</p>
 
         <div class="row">
 

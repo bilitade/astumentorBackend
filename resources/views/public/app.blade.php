@@ -43,26 +43,26 @@
 
 </head>
 
-<body class="landing-wrraper">
+<body  class="landing-wraper p-4 m-4">
     <!-- tap on top starts-->
     <div class="tap-top"><i data-feather="chevrons-up"></i></div>
     <!-- tap on tap ends-->
     <!-- page-wrapper Start-->
-    <div class="page-wrapper landing-page">
+    <div class="">
         <!-- Page Body Start-->
         <div class="page-body-wrapper">
             <!-- header start-->
 
 
-            <header class="landing-header">
-                <div class="custom-container">
+            <header style="" class="landing-header shadow-0 rounded-0 p-2">
+                <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
-                            <nav class="navbar navbar-light p-0 sticky-top " id="navbar-example2"><a class="navbar-brand"
+                            <nav class="navbar navbar-light p-0 sticky-top  " id="navbar-example2"><a class="navbar-brand"
                                     href="/"> <img class="img-fluid" style="max-width:115px"
                                         src="{{asset('assets/images/logos.svg')}}" alt=""></a>
                                 <ul class="landing-menu nav nav-pills">
-                                    <li class="nav-item menu-back">back<i class="fa fa-angle-right"></i></li>
+
                                     <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
                                     <li class="nav-item"><a class="nav-link" href="/tour">Tour</a></li>
                                     <li class="nav-item"><a class="nav-link" href="{{route('curriculm')}}">Curriculm </a></li>
@@ -97,7 +97,7 @@
 
 
 
-            
+
             <section class="landing-home section-pb-space" id="home"><img class="img-fluid bg-img-cover">
                 @yield('contents')
             </section>

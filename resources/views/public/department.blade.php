@@ -2,7 +2,7 @@
 
 @section('contents')
 <div class="container m-auto">
-    <div style="margin-top: 15vh" class="row justify-content-center">
+    <div style="" class="row justify-content-center">
 
 
            @if (!empty($department))
@@ -12,6 +12,7 @@
               <li class="breadcrumb-item"><a href="/">Home</a></li>
               <li class="breadcrumb-item"><a href="{{route('curriculm')}}">Curriculum</a></li>
               <li class="breadcrumb-item"><a href="{{ url()->previous() }}">School</a></li>
+              <li class="breadcrumb-item"><a href="#">Department</a></li>
               <li class="breadcrumb-item"><a href="#">{{$department->name}}</a></li>
 
             </ol>
