@@ -17,8 +17,8 @@
                             <div class="row">
                                 @if (!empty($schools))
                                     @foreach ($schools as $school)
-                                        <div class="col-12 col-md-6">
-                                            <div class="height-100 d-flex justify-content-center align-items-center">
+                                        <div class="col-12 col-md-4">
+                                            <div class=" d-flex justify-content-center align-items-center">
 
                                                 <a href="{{ route('school', ['id' => $school->id]) }}">
 
@@ -30,9 +30,9 @@
                                            color:#fff;
                                            transition: transform 0.2s ease;
                                            background-image: linear-gradient(to right top, #280537, #56034c, #890058, #bc005b, #eb1254);"
-                                                        class="p-4 card-border mt-4
+                                                        class="p-4 card-border
                                        "
-                                                        class="card p-3">
+                                                        class="card ">
                                                         <h1 class="text-center" style="font-size: 6rem">
                                                             {{ $school->name }}</h1>
                                                         <strong>{{ $school->title }}</strong>

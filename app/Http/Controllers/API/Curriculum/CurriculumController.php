@@ -47,9 +47,10 @@ class CurriculumController extends Controller
 
         // ], 200);
 
-
+      
 
         return view('public.school')->with(['school'=>$school, 'depts'=>$depts, 'grouped'=>$grouped]);
+
     }
 
     public function  departmentCourse($id)

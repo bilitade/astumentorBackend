@@ -29,7 +29,7 @@
               <h3 class="text-center text-primary" >{{$school->title}}</h3>
             <h6 class="text-center">Description</h6>
             <p class="text-justify text-wrap  font-weight-bold">{!!$school->description!!}</p>
-            <h6 class="text-center">Objective</h6>
+
             <p class="text-justify text-wrap">{!!$school->vm!!}</p>
 
         <div class="row">
@@ -58,7 +58,8 @@
                           <td>{{$it->courseCode}}</td>
                           <td>{{$it->courseName}}</td>
                           <td>{{$it->creditHour}}</td>
-                          <td>{{$it->type}}</td>
+                          <td>{{$it->type_id}}</td>
+                          <td>{{($it->prequest_id)? print( "null"):$it->prequest_id}}</td>
                         </tr>
 
                  @endforeach
@@ -75,9 +76,10 @@
             </div>
 
                 <div class="col-12 col-lg-4" >
-                    @if (!empty($depts));
 
-                  <h1 class="text-center">Departments</h1>
+                    @if (count($depts)>0);
+
+                    <h1 class="text-center">Departments</h1>
 
              @foreach ($depts as $dept)
 

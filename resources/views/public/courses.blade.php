@@ -4,7 +4,7 @@
 
 <div class="container m-auto">
     <div style="margin-top: 15vh" class="row justify-content-center">
-    
+
         <form  method="GET">
             <div class="input-group mt-3 w-75 m-auto">
 
@@ -20,7 +20,7 @@
         </form>
 
 
-        <table class="table pt-5 mt-4 w-75 m-auto  table-hover ">
+        <table class="table pt-5 mt-4 w-75 m-auto table ">
 
             <tbody>
                 @foreach ($courses as $course)
@@ -35,13 +35,11 @@
                     </td>
                     <td>
                         <h3>{{$course->courseCode}}</h3>
-                        <hr>
-                    <a  href="{{route('single-course',['id'=>$course->id])}}" class="btn btn-success"> <i class="fa fa-eye"></i></a>
+
+                    <a  href="{{route('single-course',['id'=>$course->id])}}"> <i class="fa fa-eye"></i></a>
                     <td>
                       <h3 class="text-center">{{$course->courseName}}</h3>
-                      <h4 class="text-center">Year: <strong>First Year</strong></h4>
-                      <h6 class="text-center">Type: <strong> General Course</strong></h6>
-                    </td>
+
                   </tr>
 
                 @endforeach
