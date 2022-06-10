@@ -12,6 +12,7 @@ class School extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['name','description','vm','title'];
 
 
     public function departments(){

@@ -26,6 +26,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/curriculm', [CurriculumController::class, 'schools'])->name('curriculm');
+Route::resource('/curriculm2', App\Http\Controllers\CurriculumController::class)->middleware('auth');
 Route::get('/curriculm/school/{id}', [CurriculumController::class, 'schoolCourse'])->name('school');
 Route::get('/curriculm/department/{id}', [CurriculumController::class, 'departmentCourse'])->name('department');
 Route::get('/courses', [CurriculumController::class, 'courses'])->name('course');

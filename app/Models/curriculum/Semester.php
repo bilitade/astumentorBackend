@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Semester extends Model
 {
     use HasFactory;
+    protected $fillable = ['name','id'];
 
     public $incrementing = false;
     protected $keyType = 'string';

@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Type extends Model
 {
+    protected $fillable = ['name','id'];
+
     use HasFactory;
     public $incrementing = false;
     protected $keyType = 'string';
