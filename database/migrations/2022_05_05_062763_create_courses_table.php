@@ -32,11 +32,6 @@ return new class extends Migration
 
             $table->string('semester_id');
             $table->foreign('semester_id')->references('id')->on('semesters')->onDelete('cascade')->onUpdate('cascade');
-
-
-            $table->unsignedBigInteger('resource_id')->nullable();
-            $table->foreign('resource_id')->references('id')->on('resources')->onDelete('cascade')->onUpdate('cascade');
-
             $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

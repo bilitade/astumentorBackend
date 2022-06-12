@@ -33,7 +33,11 @@ Route::resource('/curriculm2', App\Http\Controllers\CurriculumController::class)
 Route::get('/curriculm/school/{id}', [CurriculumController::class, 'schoolCourse'])->name('school');
 Route::get('/curriculm/department/{id}', [CurriculumController::class, 'departmentCourse'])->name('department');
 Route::get('/courses', [CurriculumController::class, 'courses'])->name('course');
+
 Route::get('/courses/{id}', [CurriculumController::class, 'course'])->name('single-course');
+Route::post('/courses/{id}', [CurriculumController::class, 'fileUpload'])->name('uploadcourseFile');
+Route::post('/download/{id}', [CurriculumController::class, 'downloadFile'])->name('downloadCoureFile');
+Route::post('/resource/{id}/delete', [CurriculumController::class, 'deleteFile'])->name('deleteCoureFile');
 
 
 

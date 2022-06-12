@@ -27,7 +27,7 @@ class CourseSeeder extends Seeder
             'department_id'=>null,
             'year_id'=>"First Year",
             'semester_id'=>"First Semester",
-            'resource_id'=>null,
+
 
 
 
@@ -46,7 +46,7 @@ class CourseSeeder extends Seeder
             'department_id'=>null,
             'year_id'=>"First Year",
             'semester_id'=>"First Semester",
-            'resource_id'=>null,
+
 
 
 
@@ -70,7 +70,7 @@ class CourseSeeder extends Seeder
             'department_id'=>null,
             'year_id'=>"First Year",
             'semester_id'=>"First Semester",
-            'resource_id'=>null,
+
         ]);
 
 
@@ -90,7 +90,7 @@ class CourseSeeder extends Seeder
             'department_id'=>null,
             'year_id'=>"First Year",
             'semester_id'=>"First Semester",
-            'resource_id'=>null,
+
         ]);
 
 
@@ -107,7 +107,7 @@ class CourseSeeder extends Seeder
             'department_id'=>null,
             'year_id'=>"First Year",
             'semester_id'=>"First Semester",
-            'resource_id'=>null,
+
         ]);
 
         DB::table('courses')->insert([
@@ -124,7 +124,7 @@ class CourseSeeder extends Seeder
             'department_id'=>null,
             'year_id'=>"First Year",
             'semester_id'=>"First Semester",
-            'resource_id'=>null,
+
         ]);
 
         DB::table('courses')->insert([
@@ -141,7 +141,7 @@ class CourseSeeder extends Seeder
             'department_id'=>null,
             'year_id'=>"First Year",
             'semester_id'=>"First Semester",
-            'resource_id'=>null,
+
         ]);
 
 
@@ -160,7 +160,7 @@ class CourseSeeder extends Seeder
             'department_id'=>null,
             'year_id'=>"Second Year",
             'semester_id'=>"First Semester",
-            'resource_id'=>null,
+
         ]);
 
         DB::table('courses')->insert([
@@ -177,7 +177,7 @@ class CourseSeeder extends Seeder
             'department_id'=>null,
             'year_id'=>"Second Year",
             'semester_id'=>"First Semester",
-            'resource_id'=>null,
+
         ]);
 
         DB::table('courses')->insert([
@@ -194,7 +194,7 @@ class CourseSeeder extends Seeder
             'department_id'=>null,
             'year_id'=>"Second Year",
             'semester_id'=>"First Semester",
-            'resource_id'=>null,
+          
         ]);
 
 

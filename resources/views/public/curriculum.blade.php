@@ -14,10 +14,10 @@
                         </nav>
                         <div class="container-fluid p-3 my-3">
 
-                            <div class="row">
+                            <div class="row gy-3">
                                 @if (!empty($schools))
                                     @foreach ($schools as $school)
-                                        <div class="col-12 col-md-4">
+                                        {{-- <div class="col-12 col-md-4">
                                             <div class=" d-flex justify-content-center align-items-center">
 
                                                 <a href="{{ route('school', ['id' => $school->id]) }}">
@@ -35,21 +35,41 @@
                                                         class="card ">
                                                         <h1 class="text-center" style="font-size: 6rem">
                                                             {{ $school->name }}</h1>
-                                                        <strong>{{ $school->title }}</strong>
+
 
                                                     </div>
 
                                                 </a>
                                             </div>
+                                        </div> --}}
+                                        <div class="col-sm">
+                                            <div
+                                            onmouseleave="this.style.transform='scale(1.0)'"
+                                          onMouseOver="this.style.transform='scale(1.1)'"
+
+                                            style= "
+
+                                             border-radius:12px;
+                                             transition: transform 0.2s ease;
+                                                background-image: linear-gradient(to right top, #280537, #56034c, #890058, #bc005b, #eb1254);"class="card h-100">
+
+
+                                              <a href="{{ route('school', ['id' => $school->id]) }}
+                                              ">
+                                              <div class="card-body">
+                                                <h5 class="card-title text-white"style="font-size: 3rem" >   {{ $school->name }}</h5>
+                                                <p class="card-text text-white"> <strong>{{ $school->title }}</strong></p>
+                                              </div>
+                                            </a>
+
+
+                                              </div>
                                         </div>
+
                                     @endforeach
                                 @endif
                             </div>
                         </div>
-
-
-
-
 
 
 

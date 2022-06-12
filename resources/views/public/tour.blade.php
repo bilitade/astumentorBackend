@@ -3,18 +3,18 @@
 
 {{-- imgs/pano/pano5.jpg --}}
 <div style="">
-    <div class="row">
-        <div class="col-12 col-lg-8 ">
+    <div class="row pt-4">
+        <div class="col-12 col-lg-7 ">
 
-                <div class="card  bg-primary ">
+                <div  class="card p-3 border-0">
 
-                    <div class="card-header text-secondary border-radius">
-                         <h4 class="text-center"> Panorama Tour</h4>
+                    <div class="card-header text-primary ">
+                         <h5 class="text-center"> Panorama Tour</h5>
                     </div>
 
-                    <div class="card-body">
+                    <div class="card-body m-0 p-0" >
 
-                        <div id="panorama" style="max-width: 100%; height:70vh ;   border-radius: 10px; "
+                        <div id="panorama" style="max-width: 100%; height:65vh ;   "
                             class="m-auto">
                         </div>
                         <script>
@@ -1281,19 +1281,23 @@
                         </script>
 
                     </div>
+
+                    <div class="card-footer bg-white">
+
+                   </div>
                 </div>
         </div>
 
-        <div class="col-12  col-lg-4 ">
-                <div class="card text-center bg-primary ">
+        <div class="col-12  col-lg-5">
+                <div class="card text-center p-3  border-0">
 
-                    <div class="card-header text-secondary border-radius">
+                    <div class="card-header text-primary ">
                          <h4  class="text-center">Google Map</h4>
                     </div>
 
-                    <div class="card-body">
+                    <div class="card-body p-0 m-0">
 
-                        <div id="googleMap" style="width:100%; min-height: 70vh;">
+                        <div id="googleMap" style="max-width: 100%; height:65vh">
                         </div>
 
                         <script>
@@ -1337,6 +1341,9 @@
 
 
                     </div>
+                    <div class="card-header ">
+
+                   </div>
                 </div>
 
 

@@ -80,4 +80,10 @@ class User extends Authenticatable
         ];
     }
 
+    public function  resources(){
+
+        return $this->hasMany(Resource::class);
+
+    }
+
 }

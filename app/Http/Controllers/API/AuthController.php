@@ -167,7 +167,7 @@ class AuthController extends Controller
             }
 
             $image_name='profile-image-'.time().'.'.$request->profile_photo->extension();
-            $request->profile_photo->move(public_path('/uploads/profile_images'),$image_name);
+            $request->profile_photo->move(public_path('/uploads/profile_images/'),$image_name);
         }else{
             $image_name=$user->profile_photo;
         }

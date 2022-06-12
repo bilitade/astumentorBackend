@@ -35,6 +35,11 @@ class Course extends Model
 
         return $this->hasOne(Type::class);
     }
+    public function resources(){
+
+        return $this->hasMany(Resource::class);
+
+    }
 
 
 

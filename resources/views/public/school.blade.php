@@ -58,7 +58,7 @@
 
                         </a>
                           <td> <a href="{{route('single-course',['id'=>$it->id])}}"> {{$it->courseCode}}</a> </td>
-                          <td> <a href="{{route('single-course',['id'=>$it->id])}}"> {{$it->coursename}}</a> </td>
+                          <td> <a href="{{route('single-course',['id'=>$it->id])}}"> {{$it->courseName}}</a> </td>
                           <td>{{$it->creditHour}}</td>
                           <td>{{$it->type_id}}</td>
                           <td>{{($it->prequest_id)? print( "null"):$it->prequest_id}}</td>

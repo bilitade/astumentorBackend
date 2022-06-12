@@ -8,6 +8,12 @@
 
 
 
+
+
+
+
+
+
         <div class="card">
             <div class="card-header pb-0">
                 <h5>Courses</h5>
@@ -20,7 +26,11 @@
                                 <th>Id</th>
                                 <th>Name</th>
                                 <th>School</th>
+                                <th>Department</th>
+                                <th>Semester</th>
+                                <th>Year</th>
                                 <th>Action</th>
+
 
                             </tr>
                         </thead>
@@ -28,15 +38,20 @@
                             @foreach ($courses as $course)
                                 <tr>
                                     <td>{{$course->courseCode}}</td>
-                                    <td>{{$course->courseName}}</td>
+                                    <td> <a href="{{route('single-course',$course->id)}}">{{$course->courseName}}</a> </td>
                                     <td>{{$course->school->name}}</td>
-                                 
+                                    <td>{{($course->department)?$course->department->name:""}}</td>
+
+                                    <td>{{($course->semester)?$course->semester->name:""}}</td>
+                                    <td>{{($course->year)?$course->year->name:""}}</td>
+
                                     <td><a class="btn btn-primary m-2 pull-left"
                                         href="/curriculm2/course{{$course->id}}/edit">Edit</a></td>
-                                    <td>{{ $course->created_at }}</td>
+
 
                                 </tr>
                             @endforeach
+
                         </tbody>
                     </table>
                 </div>

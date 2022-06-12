@@ -14,8 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('resources', function (Blueprint $table) {
-            $table->id();        
-            $table->string("title");
+            $table->id();
+            $table->string("name");
+            $table->string("location");
+            $table->string("size");
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users');
+            $table->unsignedBigInteger('course_id');
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

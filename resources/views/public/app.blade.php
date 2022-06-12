@@ -58,7 +58,7 @@
 
 <body  class="landing-wraper p-4 m-4">
     <!-- tap on top starts-->
-   
+
     <!-- tap on tap ends-->
     <!-- page-wrapper Start-->
     <div class="">
@@ -67,7 +67,7 @@
             <!-- header start-->
 
 
-            <header style="" class="landing-header shadow-0 rounded-0 p-2">
+            <header style="" class="landing-header shadow-1 ">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
@@ -88,7 +88,7 @@
 
                                     @auth
                                     <a class="btn-landing px-4" href="{{ url('/home') }}"
-                                        class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
+                                        class="text-sm text-gray-700 dark:text-gray-500 underline">DashBoard</a>
                                     @else
                                     <a href="{{ route('login') }}"
                                         class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
