@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "b16f6acf704e5c38a4e2816ef4364219",
+=======
+    "content-hash": "23237bca130c4d08a546b7408dc4dba9",
+>>>>>>> origin/crud
     "packages": [
         {
             "name": "algolia/algoliasearch-client-php",
@@ -1039,6 +1043,7 @@
             "time": "2022-03-20T21:55:58+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "intervention/image",
             "version": "2.7.2",
             "source": {
@@ -1132,6 +1137,17 @@
             },
             "dist": {
                 "type": "zip",
+=======
+            "name": "laravel/framework",
+            "version": "v9.13.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/framework.git",
+                "reference": "87b6cc8bc41d1cf85c7c1401cddde8570a3b95bb"
+            },
+            "dist": {
+                "type": "zip",
+>>>>>>> origin/crud
                 "url": "https://api.github.com/repos/laravel/framework/zipball/87b6cc8bc41d1cf85c7c1401cddde8570a3b95bb",
                 "reference": "87b6cc8bc41d1cf85c7c1401cddde8570a3b95bb",
                 "shasum": ""
@@ -1627,6 +1643,7 @@
             "time": "2022-02-21T14:59:16+00:00"
         },
         {
+<<<<<<< HEAD
             "name": "laravolt/avatar",
             "version": "4.1.7",
             "source": {
@@ -1650,10 +1667,38 @@
                 "mockery/mockery": "~1.3",
                 "php-coveralls/php-coveralls": "^2.1",
                 "phpunit/phpunit": "~9.0"
+=======
+            "name": "laravelcollective/html",
+            "version": "v6.3.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/LaravelCollective/html.git",
+                "reference": "78c3cb516ac9e6d3d76cad9191f81d217302dea6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/LaravelCollective/html/zipball/78c3cb516ac9e6d3d76cad9191f81d217302dea6",
+                "reference": "78c3cb516ac9e6d3d76cad9191f81d217302dea6",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/http": "^6.0|^7.0|^8.0|^9.0",
+                "illuminate/routing": "^6.0|^7.0|^8.0|^9.0",
+                "illuminate/session": "^6.0|^7.0|^8.0|^9.0",
+                "illuminate/support": "^6.0|^7.0|^8.0|^9.0",
+                "illuminate/view": "^6.0|^7.0|^8.0|^9.0",
+                "php": ">=7.2.5"
+            },
+            "require-dev": {
+                "illuminate/database": "^6.0|^7.0|^8.0|^9.0",
+                "mockery/mockery": "~1.0",
+                "phpunit/phpunit": "~8.5|^9.5.10"
+>>>>>>> origin/crud
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
+<<<<<<< HEAD
                     "dev-master": "5.0-dev"
                 },
                 "laravel": {
@@ -1662,12 +1707,31 @@
                     ],
                     "aliases": {
                         "Avatar": "Laravolt\\Avatar\\Facade"
+=======
+                    "dev-master": "6.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Collective\\Html\\HtmlServiceProvider"
+                    ],
+                    "aliases": {
+                        "Form": "Collective\\Html\\FormFacade",
+                        "Html": "Collective\\Html\\HtmlFacade"
+>>>>>>> origin/crud
                     }
                 }
             },
             "autoload": {
+<<<<<<< HEAD
                 "psr-4": {
                     "Laravolt\\Avatar\\": "src"
+=======
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Collective\\Html\\": "src/"
+>>>>>>> origin/crud
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -1676,6 +1740,7 @@
             ],
             "authors": [
                 {
+<<<<<<< HEAD
                     "name": "Bayu Hendra Winata",
                     "email": "uyab.exe@gmail.com",
                     "homepage": "https://laravolt.dev",
@@ -1709,6 +1774,23 @@
                 }
             ],
             "time": "2022-03-07T23:07:16+00:00"
+=======
+                    "name": "Adam Engebretson",
+                    "email": "adam@laravelcollective.com"
+                },
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                }
+            ],
+            "description": "HTML and Form Builders for the Laravel Framework",
+            "homepage": "https://laravelcollective.com",
+            "support": {
+                "issues": "https://github.com/LaravelCollective/html/issues",
+                "source": "https://github.com/LaravelCollective/html"
+            },
+            "time": "2022-02-08T21:02:54+00:00"
+>>>>>>> origin/crud
         },
         {
             "name": "league/commonmark",

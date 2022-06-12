@@ -30,7 +30,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/animate.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/owlcarousel.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/vector-map.css')}}">
-
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/css/datatables.css') }}">
     <!-- Plugins css Ends-->
     <!-- Bootstrap css-->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/bootstrap.css')}}">
@@ -71,6 +71,7 @@
           <div class="dark-logo-wrapper"><a href="/"><img class="img-fluid" src="{{asset('assets/images/logos.svg')}}" alt=""></a></div>
           <div class="toggle-sidebar"><i class="status_toggle middle" data-feather="align-center" id="sidebar-toggle"></i></div>
         </div>
+
         <div class="left-menu-header col">
           {{-- <ul>
             <li>
@@ -101,6 +102,9 @@
 
                 </span>
 
+
+
+
             <li class="onhover-dropdown">
 
 
@@ -127,14 +131,68 @@
                 </li>
               </ul>
             </li>
-            @endauth
+          <li class="onhover-dropdown"><i data-feather="message-square"></i>
+                <ul class="chat-dropdown onhover-show-div">
 
+              @guest
+              @else
+              <li class="onhover-dropdown p-0">
+                <a class="btn btn-primary-light" href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                              document.getElementById('logout-form').submit();"><i data-feather="log-out"></i>
+                 {{ __('Logout') }}
+             </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                  @csrf
+              </form>
+              </li>
+              @endguest
+            </ul>
 
           </ul>
         </div>
         <div class="d-lg-none mobile-toggle pull-right w-auto"><i data-feather="more-horizontal"></i></div>
       </div>
     </div>
+
+    {{-- @if (Route::current()->getName() != 'login' && Route::current()->getName() != 'register') --}}
+
+    <div class="page-body-wrapper sidebar-icon">
+      <!-- Page Sidebar Start-->
+      <header class="main-nav">
+
+        <nav>
+          <div class="main-navbar">
+            <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
+            <div id="mainnav">
+              <ul class="nav-menu custom-scrollbar">
+                <li class="back-btn">
+                  <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
+                </li>
+                <li class="sidebar-main-title">
+                  <div>
+                    <h6>General             </h6>
+                  </div>
+                </li>
+
+
+                <li class="sidebar-main-title">
+                  <div>
+                    <h6>Components             </h6>
+                  </div>
+                </li>
+                <li class="dropdown"><a class="nav-link menu-title" href="/student"><i data-feather="box"></i><span>Student</span></a>
+                  <ul class="nav-submenu menu-content">
+                    <li><a href="/student">profile</a></li>
+                    <li><a href="/student/groups">Groups</a></li>
+                    <li><a href="/student/2/edit">Edit Profile</a></li>
+              </ul>
+            </div>
+            <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
+          </div>
+        </nav>
+      </header>
+      @endif
     <!-- Page Header Ends-->
 
     <div class="page-body-wrapper sidebar-icon">
@@ -157,6 +215,9 @@
                   <li class="sidebar-main-title">
                    <hr>
                   </li>
+
+
+
                   <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="inbox"></i><span>Messages</span></a>
                     <ul class="nav-submenu menu-content">
                         <li><a href="{{route('messages')}}">All Messages</a></li>
@@ -164,10 +225,45 @@
 
                     </ul>
                   </li>
+
+
                   <li class="dropdown"><a class="nav-link menu-title link-nav" href="/newsfeed"><i data-feather="layout"></i><span>NewsFeeds</span></a>
 
                   </li>
-             
+
+
+
+                <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="airplay"></i><span>Admin</span></a>
+                    <ul class="nav-submenu menu-content">
+                      <li><a href="/users">manage user</a></li>
+                      <li><a href="/roles">Role</a></li>
+                    </ul>
+                  </li>
+                  <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="airplay"></i><span>Manage Curiculum</span></a>
+                    <ul class="nav-submenu menu-content">
+                        <li><a href="/curriculm2/school" class=" menu-title">School List</a></li>
+                        <li><a href="/curriculm2/schoolCreate" class=" menu-title">School Create</a></li>
+                        <li><a href="/curriculm2/department" class="menu-title">department List</a></li>
+                        <li><a href="/curriculm2/departmentCreate" class=" menu-title">department Create</a></li>
+                        <li><a href="/curriculm2/Type" class=" menu-title">Type List</a></li>
+                        <li><a href="/curriculm2/TypeCreate" class=" menu-title">Type Create</a></li>
+                        <li><a href="/curriculm2/semister" class=" menu-title">semester</a></li>
+                        <li><a href="/curriculm2/semesterCreate" class="menu-title">semester Create</a></li>
+                        <li><a href="/curriculm2/resource" class="menu-title">resource </a></li>
+                        <li><a href="/curriculm2/resourceCreate" class=" menu-title">resource Create</a></li>
+                        <li><a href="/curriculm2/Createcourse" class=" menu-title">Cource Create</a></li>
+                        <li><a href="/curriculm2/allcourse" class=" menu-title">Cource list</a></li>
+                        <li><a href="/curriculm2/year" class=" menu-title">Year</a></li>
+                        <li><a href="/curriculm2/Createyear" class="menu-title">Year Create</a></li>
+                    </ul>
+                  </li>
+
+
+
+
+
+
+
 
 
 
@@ -175,7 +271,7 @@
                   <li class="sidebar-main-title">
                    <hr>
                   </li>
-                
+
 
 
 
@@ -240,6 +336,17 @@
     <script src="{{asset('assets/js/tooltip-init.js')}}"></script>
     <!-- Plugins JS Ends-->
     <!-- Theme js-->
+    @yield('js')
+    <script src="{{asset('assets/js/editor/ckeditor/ckeditor.js')}}"></script>
+    <script src=" {{asset('assets/js/editor/ckeditor/adapters/jquery.js')}}"></script>
+    <script src="{{asset('assets/js/editor/ckeditor/styles.js')}}"></script>
+    <script src="{{asset('assets/js/editor/ckeditor/ckeditor.custom.js')}}"></script>
+
+
+    <script src="{{ asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
+
+
     <script src="{{asset('assets/js/script.js')}}"></script>
 
     <!-- login js-->

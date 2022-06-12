@@ -21,8 +21,8 @@ return new class extends Migration
             $table->text("description");
 
             $table->unsignedBigInteger('school_id')->nullable();
-            $table->foreign('school_id')->references('id')->on('schools');
-           
+            $table->foreign('school_id')->references('id')->on('schools')->onDelete('cascade')->onUpdate('cascade');
+
 
 
             $table->timestamps();

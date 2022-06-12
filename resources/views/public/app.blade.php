@@ -17,6 +17,18 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css" />
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+    <style>
+        .image-upload > input
+{
+    display: none;
+}
+
+.image-upload img
+{
+    width: 80px;
+    cursor: pointer;
+}
+    </style>
 
       @yield('head')
 
@@ -29,6 +41,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/flag-icon.css')}}">
     <!-- Feather icon-->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/feather-icon.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/css/dropzone.css')}}">
     <!-- Plugins css start-->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/animate.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/owlcarousel.css')}}">
@@ -45,7 +58,7 @@
 
 <body  class="landing-wraper p-4 m-4">
     <!-- tap on top starts-->
-    <div class="tap-top"><i data-feather="chevrons-up"></i></div>
+   
     <!-- tap on tap ends-->
     <!-- page-wrapper Start-->
     <div class="">
@@ -106,7 +119,8 @@
 
 
 
-
+            <script src="{{asset("assets/js/icons/feather-icon/feather.min.js")}}"></script>
+            <script src="{{asset("assets/js/icons/feather-icon/feather-icon.js")}}"></script>
 
 
 

@@ -20,25 +20,24 @@ return new class extends Migration
             $table->unsignedSmallInteger("creditHour");
             $table->longText('description');
             $table->string('type_id');
-            $table->foreign('type_id')->references('id')->on('types');
 
             $table->unsignedBigInteger('school_id')->nullable();
-            $table->foreign('school_id')->references('id')->on('schools');
+            $table->foreign('school_id')->references('id')->on('schools')->onDelete('cascade');
 
             $table->unsignedBigInteger('department_id')->nullable();
-            $table->foreign('department_id')->references('id')->on('departments');
+            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade')->onUpdate('cascade');
 
-            $table->string('year_id',36);
-            $table->foreign('year_id')->references('id')->on('years');
+            $table->string('year_id');
+            $table->foreign('year_id')->references('id')->on('years')->onDelete('cascade')->onUpdate('cascade');
 
-            $table->string('semester_id',36);
-            $table->foreign('semester_id')->references('id')->on('semesters');
+            $table->string('semester_id');
+            $table->foreign('semester_id')->references('id')->on('semesters')->onDelete('cascade')->onUpdate('cascade');
 
 
             $table->unsignedBigInteger('resource_id')->nullable();
-            $table->foreign('resource_id')->references('id')->on('resources');
+            $table->foreign('resource_id')->references('id')->on('resources')->onDelete('cascade')->onUpdate('cascade');
 
-
+            $table->foreign('type_id')->references('id')->on('types')->onDelete('cascade')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

@@ -11,6 +11,7 @@ use App\Models\Post;
 class Group extends Model
 {
     use HasFactory;
+    protected $fillable = ['user_id','group_id'];
 
 
     public function posts(){

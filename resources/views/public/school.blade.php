@@ -54,9 +54,11 @@
 
 
                       @foreach ($item as $it)
-                        <tr>
-                          <td>{{$it->courseCode}}</td>
-                          <td>{{$it->courseName}}</td>
+                        <tr><a href="">
+
+                        </a>
+                          <td> <a href="{{route('single-course',['id'=>$it->id])}}"> {{$it->courseCode}}</a> </td>
+                          <td> <a href="{{route('single-course',['id'=>$it->id])}}"> {{$it->coursename}}</a> </td>
                           <td>{{$it->creditHour}}</td>
                           <td>{{$it->type_id}}</td>
                           <td>{{($it->prequest_id)? print( "null"):$it->prequest_id}}</td>

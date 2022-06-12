@@ -13,6 +13,8 @@ class Course extends Model
 
     use HasFactory,Searchable ;
 
+    protected $fillable = ['courseCode','courseName','creditHour','description','type_id','school_id','department_id','year_id','semester_id','resource_id' ];
+
     public function school(){
         return $this->belongsTo(School::class);
     }
