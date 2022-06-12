@@ -13,6 +13,11 @@ use App\Models\curriculum\Year;
 
 class CurriculumController extends Controller
 {
+  public function __construct()
+  {
+           $this->middleware('verified');
+  }
+
 
     public function index()
     {

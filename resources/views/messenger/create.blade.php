@@ -15,7 +15,7 @@
         <div class="form-group">
             <label class="control-label">Subject</label>
             <input type="text" class="form-control" name="subject" placeholder="Subject"
-                   value="{{ old('subject') }}">
+                  required   value="{{ old('subject') }}">
         </div>
 
         <!-- Message Form Input -->

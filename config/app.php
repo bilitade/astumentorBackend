@@ -165,6 +165,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
          Cmgmyr\Messenger\MessengerServiceProvider::class,
+         Spatie\Permission\PermissionServiceProvider::class,
         /*
          * Package Service Providers...
          */

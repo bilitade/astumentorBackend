@@ -84,11 +84,6 @@
                   </div>
                 </div>
 
-
-
-
-
-
                 <div class="form-group">
                   <label>Password</label>
                   <div class="input-group"><span class="input-group-text"><i class="icon-lock"></i></span>

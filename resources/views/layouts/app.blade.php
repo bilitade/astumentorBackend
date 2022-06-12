@@ -131,22 +131,14 @@
                 </li>
               </ul>
             </li>
-          <li class="onhover-dropdown"><i data-feather="message-square"></i>
+          <li class="onhover-dropdown"><i data-feather="bell"></i>
                 <ul class="chat-dropdown onhover-show-div">
 
-              @guest
-              @else
+
               <li class="onhover-dropdown p-0">
-                <a class="btn btn-primary-light" href="{{ route('logout') }}"
-                onclick="event.preventDefault();
-                              document.getElementById('logout-form').submit();"><i data-feather="log-out"></i>
-                 {{ __('Logout') }}
-             </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                  @csrf
-              </form>
+
               </li>
-              @endguest
+
             </ul>
 
           </ul>
@@ -199,7 +191,7 @@
         <!-- Page Sidebar Start-->
         <header class="main-nav">
           <div class="sidebar-user text-center"><a class="setting-primary" href="javascript:void(0)"><i data-feather="settings"></i></a><img class="img-90 rounded-circle" src="{{Avatar::create(Auth::user()->name)->toBase64() }}" alt="">
-            <div class="badge-bottom"><span class="badge badge-primary">Student</span></div><a href="user-profile.html">
+            <div class="badge-bottom"><span class="badge badge-primary">{{Auth::user()->roles[0]->name}}</span></div><a href="user-profile.html">
               <h6 class="mt-3 f-14 f-w-600">{{Auth::user()->name}}</h6></a>
 
 
@@ -218,7 +210,7 @@
 
 
 
-                  <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="inbox"></i><span>Messages</span></a>
+                  <li class="dropdown mb-2"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="inbox"></i><span>Messages</span></a>
                     <ul class="nav-submenu menu-content">
                         <li><a href="{{route('messages')}}">All Messages</a></li>
                       <li><a href="{{route('messages.create')}}">Write Message</a></li>
@@ -227,19 +219,20 @@
                   </li>
 
 
-                  <li class="dropdown"><a class="nav-link menu-title link-nav" href="/newsfeed"><i data-feather="layout"></i><span>NewsFeeds</span></a>
+                  <li class="dropdown mb-2"><a class="nav-link menu-title link-nav" href="/newsfeed"><i data-feather="layout"></i><span>NewsFeeds</span></a>
 
                   </li>
 
 
 
-                <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="airplay"></i><span>Admin</span></a>
+                <li class="dropdown mb-2"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="airplay"></i><span>Admin</span></a>
                     <ul class="nav-submenu menu-content">
-                      <li><a href="/users">manage user</a></li>
-                      <li><a href="/roles">Role</a></li>
+                      <li><a href="{{route('users.index')}}">Manage user</a></li>
+                      <li><a href="{{route('users.create')}}">Add user</a></li>
+
                     </ul>
                   </li>
-                  <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="airplay"></i><span>Manage Curiculum</span></a>
+                  <li class="dropdown mb-2"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="airplay"></i><span>Manage Curiculum</span></a>
                     <ul class="nav-submenu menu-content">
                         <li><a href="/curriculm2/school" class=" menu-title">School List</a></li>
                         <li><a href="/curriculm2/schoolCreate" class=" menu-title">School Create</a></li>
