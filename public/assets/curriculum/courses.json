@@ -1,0 +1,47 @@
+[
+
+
+    {
+        "code": "MATH1101",
+        "name": "Applied Mathematics I ",
+        "detail": "Numbers; functions; Vectors; Matrices and Determinants; Limits and Continuity; Derivatives; Applications of the Derivative; The integral; Inverse Functions; In determinants Forms, Improper Integrals and Taylor Formula. ",
+        "pre": "NONE",
+        "crhr": 4,
+        "class": 0,
+        "laboratory": 0,
+        "tutorial": 0
+    }, {
+        "code": "PHY1101",
+        "name": "General Physics I ",
+        "detail": "Mechanics: Motion in a Straight Line, Motion in Two and Three Dimensions, Force and Motion, Work, Energy, and Power, Conservation of Energy, Systems of Particles, Rotational Motion, Rotational Vectors and Angular, Momentum. Oscillations, Waves, and Fluids: Oscillatory Motion, Wave Motion, Fluid Motion. Thermodynamics: Temperature and Heat, the Thermal Behavior of Matter, Heat, Work, and the First Law of Thermodynamics, the Second Law of Thermodynamics ",
+        "pre": "NONE",
+        "crhr": 3,
+        "class": 0,
+        "laboratory": 0,
+        "tutorial": 0
+    }, {
+        "code": "CHEM1101",
+        "name": "General Chemistry ",
+        "detail": "Introduction to the study of modern chemistry, atom in modern chemistry, Chemical formulas, chemical equations, and reaction yields. Chemical Bonding and Molecular Structure, Chemical bonding: The classical Description, Introduction to Quantum Mechanics, Quantum Mechanics and Atomic Structure, Quantum Mechanics and Molecular Structure, Bonding in Organic Molecules, Bonding in Transition Metal Compounds and Coordinate Complexes. Kinetic Molecular Description of the State of Matter, The Gaseous State, Solids, Liquids, and Phase Transitions Solutions. Equilibrium in Chemical Reactions, Thermodynamic Processes, Spontaneous Processes and Thermodynamic Equilibrium, Chemical Equilibrium, Acid-Base Equilibrium, Solubility and Precipitation Equilibrium, Electrochemistry, Rates of Physical and Chemical Processes, Materials, Structure and Bonding in Solids, Inorganic Materials, Polymeric Materials and soft condensed Matter ",
+        "pre": "NONE",
+        "crhr": 3,
+        "class": 0,
+        "laboratory": 0,
+        "tutorial": 0
+    },
+    {
+        "code": "LAR1101",
+        "name": "Introduction to Civics and Ethics ",
+        "detail": "This course introduces students the basic concepts of Civics and Ethics at higher education level. It deals with concepts like citizenship, morality, profession and professional ethics. The course also acquaints students with fundamental concepts of professional ethics, society and state, development issues, environmental, democracy, good governance and globalization. ",
+        "pre": "NONE",
+        "crhr": 3,
+        "class": 0,
+        "laboratory": 0,
+        "tutorial": 0
+    }
+
+
+
+
+
+]
