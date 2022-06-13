@@ -5,7 +5,34 @@
 
 <div class="user-profile social-app-profile">
     <div class="row">
+        <div class="col-8 m-auto">
+            <div class="card">
+                <div class="social-tab">
 
+                    <div class="media p-2">
+                        <img  style="max-width: 15%" class="  rounded-circle" src=" {{ ($group->image !="")? asset('group/profile/'.$group->image): Avatar::create($group->name)->toBase64() }}"  alt="">
+
+                        <div class="media-body p-2">
+                          <div class="about">
+                            <div class="name">  <h4 class="media-heading">
+
+                                 <h1 style="text-transform: capitalize;" class="text-center"> {{$group->name}}</h1>
+                                 <hr>
+                                 <h6 class="center"> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum quis provident ipsa minima ut? Veniam sint, deleniti, maxime at, tenetur accusantium consequuntur vel atque distinctio unde possimus fuga. Ut asperiores optio architecto voluptatem corrupti quod, atque perspiciatis odio adipisci enim maxime dolore vel labore eius a veritatis laborum hic est necessitatibus iusto eveniet ullam dolor. At voluptas, ab cupiditate doloremque quod consequatur inventore asperiores dolor debitis. Cupiditate ad quia totam quas sed, voluptatem eos nemo voluptas laudantium corporis cumque distinctio natus atque hic vel. Autem inventore quis animi, delectus aspernatur assumenda fugit nobis rem natus iure quos accusantium officia aut!</6>
+
+                          </div>
+                        </div>
+                        <form action="{{route('leave', $group->id)}}">
+                            <button class=" btn btn-danger mr-auto">Leave Group</button>
+                        </form>
+
+                      </div>
+                </div>
+
+
+
+            </div>
+        </div>
 
     </div>
 
@@ -43,16 +70,51 @@
             <div class="row">
 
 
-                <div class="col-xl-3 xl-40 col-md-5 box-col-4">
+                <div class="col-xl-3 xl-40 col-md-5 box-col-4 m4-4">
                     <div class="default-according style-1 faq-accordion job-accordion" id="accordionoc4">
                         <div class="row">
 
+                      <div class="card ">
+                         <div class="card-header bg-primary">
+                         <h3 class="text-center">Members</h3>
+                         </div>
+                        <div class="card-body">
 
+                          <ul>
+                            @foreach ($group->members as $member)
+
+                            <li>
+                                <div class="media">
+                                    <img
+                                        class="img-50 img-fluid m-r-20 rounded-circle update_img_0"
+                                        src="{{ Avatar::create($member->name)->toBase64() }}"
+                                        alt="">
+                                    <div class="media-body">
+                                        <h4>   {{ $member->name }}
+
+                                        </h4>
+
+                                    </div>
+                                </div>
+                            </li>
+                                 <hr>
+
+                            @endforeach
+
+                          </ul>
+
+
+                        </div>
+                      </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-6 xl-60 col-md-7 box-col-8">
                     <div class="row">
+                         <div class="col"></div>
+                         <div class="col">
+
+                         </div>
                         <div class="card">
                             <div class="card-body">
                                 <div class="new-users-social">
@@ -83,7 +145,7 @@
 
                                                             <i data-feather="image"></i>
                                                         </label>
-                                                        <input hidden name="group" type="number" value="">
+                                                        <input hidden name="group" type="number" value="{{$group->id}}">
                                                         <input style="display: none" name="image" class="form-control"
                                                             type="file" id="formFile" onchange="preview()">
 

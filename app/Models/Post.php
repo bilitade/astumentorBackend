@@ -13,6 +13,7 @@ class Post extends Model
         'body',
         'image',
         'user_id',
+        'group_id'
 
 
     ];

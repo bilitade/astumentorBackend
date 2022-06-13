@@ -7,10 +7,9 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class EventAdded extends Notification
+class GroupNotification extends Notification
 {
     use Queueable;
-    private $details;
 
     /**
      * Create a new notification instance.
@@ -61,11 +60,11 @@ class EventAdded extends Notification
         ];
     }
 
+
     public function toDatabase($notifiable)
     {
         return [
            'data' => $this->details['body']
         ];
     }
-
 }

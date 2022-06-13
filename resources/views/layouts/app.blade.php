@@ -248,7 +248,7 @@
                   </li>
 
                   @role('Admin')
-                <li class="dropdown mb-2"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="airplay"></i><span>Admin</span></a>
+                <li class="dropdown mb-2"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="user-check"></i><span>Admin</span></a>
                     <ul class="nav-submenu menu-content">
                       <li><a href="{{route('users.index')}}">Manage user</a></li>
                       <li><a href="{{route('users.create')}}">Add user</a></li>
@@ -256,24 +256,47 @@
                     </ul>
                   </li>
                   @endrole
-                  <li class="dropdown mb-2"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="airplay"></i><span>Manage Curiculum</span></a>
+                  <li class="dropdown mb-2"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="book-open"></i><span>Manage Curriculum</span></a>
                     <ul class="nav-submenu menu-content">
-                        <li><a href="/curriculm2/school" class=" menu-title">School List</a></li>
-                        <li><a href="/curriculm2/schoolCreate" class=" menu-title">School Create</a></li>
-                        <li><a href="/curriculm2/department" class="menu-title">department List</a></li>
-                        <li><a href="/curriculm2/departmentCreate" class=" menu-title">department Create</a></li>
-                        <li><a href="/curriculm2/Type" class=" menu-title">Type List</a></li>
-                        <li><a href="/curriculm2/TypeCreate" class=" menu-title">Type Create</a></li>
-                        <li><a href="/curriculm2/semister" class=" menu-title">semester</a></li>
-                        <li><a href="/curriculm2/semesterCreate" class="menu-title">semester Create</a></li>
-                        <li><a href="/curriculm2/resource" class="menu-title">resource </a></li>
-                        <li><a href="/curriculm2/resourceCreate" class=" menu-title">resource Create</a></li>
-                        <li><a href="/curriculm2/Createcourse" class=" menu-title">Cource Create</a></li>
-                        <li><a href="/curriculm2/allcourse" class=" menu-title">Cource list</a></li>
-                        <li><a href="/curriculm2/year" class=" menu-title">Year</a></li>
-                        <li><a href="/curriculm2/Createyear" class="menu-title">Year Create</a></li>
+                        <li><a href="/curriculm2/school" class=" ">School List</a></li>
+                        <li><a href="/curriculm2/schoolCreate" class=" ">School Create</a></li>
+                        <li><a href="/curriculm2/department" class="">department List</a></li>
+                        <li><a href="/curriculm2/departmentCreate" class=" ">department Create</a></li>
+                        <li><a href="/curriculm2/Type" class="">Type List</a></li>
+                        <li><a href="/curriculm2/TypeCreate" class="">Type Create</a></li>
+                        <li><a href="/curriculm2/semister" class=" ">semester</a></li>
+                        <li><a href="/curriculm2/semesterCreate" class="">semester Create</a></li>
+                        <li><a href="/curriculm2/resource" class="">resource </a></li>
+                        <li><a href="/curriculm2/resourceCreate" class="">resource Create</a></li>
+                        <li><a href="/curriculm2/Createcourse" class=" ">Cource Create</a></li>
+                        <li><a href="/curriculm2/allcourse" class=" ">Cource list</a></li>
+                        <li><a href="/curriculm2/year" class=" ">Year</a></li>
+                        <li><a href="/curriculm2/Createyear" class="">Year Create</a></li>
                     </ul>
                   </li>
+
+                  <li class="dropdown mb-2"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="users"></i><span>Manage Groups</span></a>
+                    <ul class="nav-submenu menu-content">
+                      <li><a href="{{route('groups.index')}}">Groups</a></li>
+                      <li><a href="{{route('groups.create')}}">Add</a></li>
+
+                    </ul>
+                  </li>
+
+
+                  <li class=""><a class=" menu-title" href="{{route('allgroups')}}"><i  data-feather="trello"></i><span class="ml-2">Groups</span></a>
+
+                  </li>
+
+
+
+
+
+
+
+
+
+
 
 
 

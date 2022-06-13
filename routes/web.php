@@ -8,6 +8,7 @@ use App\Http\Controllers\WebNewsFeedController;
 use App\Http\Controllers\WebCommentController;
 use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\GroupController;
 
 /*
 |--------------------------------------------------------------------------
@@ -96,3 +97,7 @@ Route::post('full-calender/action', [FullCalenderController::class, 'action']);
 
 });
 
+Route::resource('groups',Groupcontroller::class);
+Route::get('groupjoin/{id}',[Groupcontroller::class, 'join'])->name('join');
+Route::get('allgroups',[Groupcontroller::class, 'groups'])->name('allgroups');
+Route::get('groups/{id}/leave',[Groupcontroller::class, 'leave'])->name('leave');

@@ -3,11 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\groups\Group;
+use App\Models\groups\Member;
 use App\Models\Like;
  use Illuminate\Http\Request;
  use Illuminate\Support\Facades\File;
 
 use App\Models\Post;
+use App\Models\User;
+use App\Notifications\GroupNotification;
 
 class WebNewsFeedController extends Controller
 {
@@ -39,7 +43,7 @@ class WebNewsFeedController extends Controller
     {
 
 
-        //  dd($request);
+        //  dd($request->all());
 
 
         $validated = $request->validate([
@@ -50,18 +54,40 @@ class WebNewsFeedController extends Controller
 
 
 
- $image_name="";
+        $image_name="";
         if ($request->hasFile('image')) {
         $image_name = time() . '.' . $request->image->extension();
         $request->image->move(public_path('/uploads/posts_images'), $image_name);
         }
 
-        $post = Post::create([
-            'body' => $validated['body'],
-            'user_id' => auth()->user()->id,
-            'image' => $image_name,
 
-        ]);
+
+            $post = Post::create([
+                'group_id'=>$request->group,
+                'body' => $validated['body'],
+                'user_id' => auth()->user()->id,
+                'image' => $image_name,
+
+
+            ]);
+            if($request->group!=null)
+            {
+
+           $members=Member::where('group_id',$request->group)->get();
+           $group=Group::findOrFail($request->group);
+           $details = [ 'body' => "New Post in' {$group->name}'  " ];
+
+      foreach($members as $member){
+
+        $user= User::find($member->user_id);
+        $user->notify(new GroupNotification($details));
+
+      }
+
+            }
+
+
+
 
         // // for now skip for post image
 
@@ -170,5 +196,5 @@ class WebNewsFeedController extends Controller
 
 
 
-   
+
 }

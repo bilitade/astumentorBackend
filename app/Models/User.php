@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\groups\Group;
+use App\Models\groups\Member;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -86,6 +87,10 @@ class User extends Authenticatable implements MustVerifyEmail
 
         return $this->hasMany(Resource::class);
 
+    }
+    public function members(){
+
+        $this->belongsToMany(Member::class);
     }
 
 }

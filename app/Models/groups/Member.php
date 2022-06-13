@@ -9,11 +9,14 @@ use Illuminate\Database\Eloquent\Model;
 class Member extends Model
 {
     use HasFactory;
-
+    protected $table = 'group_user';
 
     function group(){
       $this->belongsToMany(Group::class);
 
+    }
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 
 }

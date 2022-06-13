@@ -35,7 +35,7 @@ class FullCalenderController extends Controller
     			]);
                 $details = [
                     'greeting' => 'Hello Dear!',
-                    'body' => 'New Event added  checkout ',
+                    'body' => "New Event' {$event->title}' added  checkout ",
                     'thanks' => 'sincererly',
             ];
 
