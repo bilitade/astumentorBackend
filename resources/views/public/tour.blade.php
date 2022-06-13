@@ -17,6 +17,9 @@
                         <div id="panorama" style="max-width: 100%; height:65vh ;   "
                             class="m-auto">
                         </div>
+
+
+
                         <script>
                             pannellum.viewer('panorama', {
                                 "default": {
@@ -1288,6 +1291,8 @@
                 </div>
         </div>
 
+
+
         <div class="col-12  col-lg-5">
                 <div class="card text-center p-3  border-0">
 
@@ -1314,6 +1319,8 @@
                                 var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
                                 var gedaGate = new google.maps.LatLng(8.557047557395144, 39.290960004621724);
                                 var mainGate = new google.maps.LatLng(8.557047557395144, 39.290960004621724);
+
+                                
                                 var admin = new google.maps.LatLng(8.561243511220374, 39.29023112189616);
                                 var marker1 = new google.maps.Marker({
                                     position: gedaGate,

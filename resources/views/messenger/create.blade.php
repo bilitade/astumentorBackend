@@ -8,6 +8,7 @@
 
 </div>
 <h1 class="text-center">Compose message</h1>
+@include('private.flash_message')
 <form action="{{ route('messages.store') }}" method="post">
     {{ csrf_field() }}
     <div class="col-md-6 m-auto">
@@ -21,7 +22,7 @@
         <!-- Message Form Input -->
         <div class="form-group">
             <label class="control-label">Message</label>
-            <textarea name="message" class="form-control">{{ old('message') }}</textarea>
+            <textarea name="message" required class="form-control">{{ old('message') }}</textarea>
         </div>
 
 
@@ -34,13 +35,13 @@
                 @foreach($users as $user)
                     {{-- <label title="{{ $user->name }}">{{ $user->name }} </label>
                         <input type="checkbox" class="form-check-input" name="recipients[]"  value="{{ $user->id }}"> --}}
-                         @if ($user->id!=Auth::id())
+
                          <div>
                             <input class="form-check-input" id="{{$user->name}}" type="checkbox"  name="recipients[]"  value="{{ $user->id }}">
                             <label class="form-check-label" for="{{$user->name}}">{{$user->name}}</label>
                         </div>
 
-                         @endif
+
 
 
                 @endforeach

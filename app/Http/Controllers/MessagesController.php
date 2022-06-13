@@ -94,8 +94,12 @@ class MessagesController extends Controller
      *
      * @return mixed
      */
-    public function store()
+    public function store(Request $request )
     {
+        $request->validate(
+            [
+                'recipients'=>'required'
+            ]);
         $input = Req::all();
 
         $thread = Thread::create([

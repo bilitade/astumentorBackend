@@ -6,18 +6,7 @@
 <div class="user-profile social-app-profile">
     <div class="row">
 
-        <!--  user profile first-style start-->
-        <div class="col-sm-12 box-col-12">
-            <div class="card">
-                <div class="social-tab">
 
-                    <div class="input-group">
-                        <input class="form-control" type="text" placeholder="Search......."><span
-                            class="input-group-text"> <i class="fa fa-search"></i></span>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
 
@@ -78,7 +67,7 @@
                                         <div class="comments-box">
                                             <div class="media"><img class="img-50 img-fluid m-r-20 rounded-circle"
                                                     alt=""
-                                                    src="{{Avatar::create(Auth::user()->name)->toBase64() }}">
+                                                    src="{{ (Auth::user()->profile_photo)? asset('uploads/profile_images/'.Auth::user()->profile_photo): Avatar::create(Auth::user()->name)->toBase64() }}">
                                                 <div class="media-body">
                                                     <div class="input-group text-box">
                                                         <input class="form-control input-txt-bx" type="text"
@@ -132,14 +121,14 @@
                                 <div class="card-body">
                                     <div class="new-users-social">
                                         <div class="media"><img class="rounded-circle image-radius m-r-15"
-                                                src="{{Avatar::create($post->user->name)->toBase64() }}" alt="">
+                                                src="{{ ($post->user->profile_photo)? asset('uploads/profile_images/'.$post->user->profile_photo): Avatar::create($post->user->name)->toBase64() }}" alt="">
                                             <div class="media-body">
                                                 <h6 class="mb-0 f-w-700">{{$post->user->name}}</h6>
                                                 <p>{{$post->human_readable_created_at}}</p>
                                                 <hr>
 
                                             </div>
-                                            @if ($post->user_id==Auth::user()->id)
+                                            @if ($post->user_id==Auth::user()->id|| Auth::user()->hasRole('Admin'))
                                             <div class=" dropdown-basic rounded">
                                                 <div class="dropdown">
                                                     <div class="btn-group mb-0">
@@ -201,7 +190,7 @@
 
                                                                @if ( $comment->user_id==Auth::user()->id)
                                                                <div class="your-msg">
-                                                                <div class="media"><img class="img-50 img-fluid m-r-20 rounded-circle" alt="" src="{{Avatar::create($comment->user->name)->toBase64() }}">
+                                                                <div class="media"><img class="img-50 img-fluid m-r-20 rounded-circle" alt="" src="{{ ($comment->user->profile_photo)? asset('uploads/profile_images/'.$comment->user->profile_photo): Avatar::create($comment->user->name)->toBase64() }} ">
 
 
                                                                   <div class="media-body"><span class="f-w-600">{{$comment->user->name }}
@@ -222,7 +211,7 @@
                                                               </div>
                                                               @else
                                                               <div class="other-msg">
-                                                                <div class="media"><img class="img-50 img-fluid m-r-20 rounded-circle" alt="" src="{{Avatar::create($comment->user->name)->toBase64() }}">
+                                                                <div class="media"><img class="img-50 img-fluid m-r-20 rounded-circle" alt="" src="{{ ($comment->user->profile_photo)? asset('uploads/profile_images/'.$comment->user->profile_photo): Avatar::create($comment->user->name)->toBase64() }}">
                                                                   <div class="media-body"><span class="f-w-600">{{$comment->user->name}} <span>{{ $comment->human_readable_created_at}} </span></span>
                                                                     <p>{{$comment->comment}}</p>
                                                                   </div>

@@ -43,6 +43,15 @@ Route::post('/resource/{id}/delete', [CurriculumController::class, 'deleteFile']
 Route::resource('users', UserController::class);
 Route::post('users/{id}/ban-unban',[UserController::class, 'ban_uban'] )->name('banunban');
 
+Route::get('/markAsRead', function(){
+
+	auth()->user()->unreadNotifications->markAsRead();
+
+	return redirect()->back();
+
+})->name('mark');
+Route::post('/profile', [UserController::class, 'update_profile'])->name('profile');
+
 
 
 // Route::group(['prefix' => 'messages'], function () {

@@ -86,7 +86,7 @@
                                                             <div class="your-msg">
                                                                 <div class="media"><img
                                                                         class="img-50 img-fluid m-r-20 rounded-circle"
-                                                                        alt="" src="{{Avatar::create($commentn->user->name)->toBase64() }}">
+                                                                        alt="" src="{{ ($commentn->user->profile_photo)? asset('uploads/profile_images/'.$commentn->user->profile_photo): Avatar::create($commentn->user->name)->toBase64() }}">
                                                                     <div class="media-body"><span
                                                                             class="f-w-600">{{ $commentn->user->name }}
                                                                             <span>
@@ -106,7 +106,7 @@
                                                             <div class="other-msg">
                                                                 <div class="media"><img
                                                                         class="img-50 img-fluid m-r-20 rounded-circle"
-                                                                        alt="" src="{{Avatar::create($comment->user->name)->toBase64() }}">
+                                                                        alt="" src="{{ ($commentn->user->profile_photo)? asset('uploads/profile_images/'.$commentn->user->profile_photo): Avatar::create($commentn->user->name)->toBase64() }} ">
                                                                     <div class="media-body"><span
                                                                             class="f-w-600">{{ $commentn->user->name }}
                                                                             <span>{{ $commentn->human_readable_created_at }}
@@ -131,7 +131,7 @@
 
                                                     <div class="media"><img
                                                         class="img-50 img-fluid m-r-20 rounded-circle" alt=""
-                                                        src="{{Avatar::create(Auth::user()->name)->toBase64() }}">
+                                                        src="{{ (Auth::user()->profile_photo)? asset('uploads/profile_images/'.Auth::user()->profile_photo): Avatar::create(Auth::user()->name)->toBase64() }}">
                                                     <div class="media-body">
                                                         <div class="input-group text-box">
                                                             <input class="form-control input-txt-bx" type="text"

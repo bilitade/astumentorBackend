@@ -113,7 +113,12 @@
 
             <section class="landing-home section-pb-space" id="home"><img class="img-fluid bg-img-cover">
                 @yield('contents')
+
+
             </section>
+
+
+
 
 
 

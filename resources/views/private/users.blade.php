@@ -17,6 +17,7 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Email verifed at</th>
+                            <th>Role</th>
                              <th>Joined</th>
                              <th>status</th>
                              <th>Action</th>
@@ -29,11 +30,12 @@
                         @foreach ($users as $user)
                             <tr>
                                 <td>{{$user->id}}</td>
-                                <td><img class="img-30 rounded-circle" src="{{Avatar::create($user->name)->toBase64() }}"  alt=""/> </td>
+                                <td><img class="img-30 rounded-circle" src="{{ ($user->profile_photo)? asset('uploads/profile_images/'.$user->profile_photo): Avatar::create($user->name)->toBase64() }}"  alt=""/> </td>
                                 <td>{{$user->name}}</td>
 
                                  <td>{{$user->email}}</td>
                                  <td>{{$user->email_verified_at}}</td>
+                                 <td>  <span class="badge rounded-pill bg-warning text-dark">{{$user->roles[0]->name}}</span></td>
                                  <td>{{$user->created_at}}</td>
                                  <td>{{ ($user->status==1)? 'active' :'banned' }}</td>
                                  <td>

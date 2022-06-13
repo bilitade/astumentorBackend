@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('group_id')->nullable();
-            $table->string('body');
+            $table->text('body');
             $table->string('image')->nullable();
 
             $table->foreign('user_id')

@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\User;
+use App\Notifications\EventAdded;
 use Illuminate\Http\Request;
 
 class FullCalenderController extends Controller
 {
-    
+
     public function index(Request $request)
     {
     	if($request->ajax())
@@ -31,6 +33,17 @@ class FullCalenderController extends Controller
     				'start'		=>	$request->start,
     				'end'		=>	$request->end
     			]);
+                $details = [
+                    'greeting' => 'Hello Dear!',
+                    'body' => 'New Event added  checkout ',
+                    'thanks' => 'sincererly',
+            ];
+
+                $users= User::all();
+              foreach($users as $user){
+                $user->notify(new EventAdded($details));
+
+              }
 
     			return response()->json($event);
     		}

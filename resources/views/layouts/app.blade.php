@@ -109,7 +109,7 @@
 
 
 
-              <div class="notification-box"> <img class="img-30 rounded-circle" src="{{Avatar::create(Auth::user()->name)->toBase64() }}"  alt=""/></div>
+              <div class="notification-box"> <img class="img-30 rounded-circle" src="{{ (Auth::user()->profile_photo)? asset('uploads/profile_images/'.Auth::user()->profile_photo): Avatar::create(Auth::user()->name)->toBase64() }}"  alt=""/></div>
               <ul class="notification-dropdown onhover-show-div">
                 <li>
                   <p class=" mb-0 text-center">  {{ Auth::user()->name }}</p>
@@ -131,15 +131,58 @@
                 </li>
               </ul>
             </li>
-          <li class="onhover-dropdown"><i data-feather="bell"></i>
-                <ul class="chat-dropdown onhover-show-div">
+          <li class="onhover-dropdown">
+
+            <ul class="notification-dropdown onhover-show-div">
+                <form action="{{route('mark')}}">
+                    @csrf
+                    <button type="submit" class="btn btn-danger  w-100 ">markAsRead</button>
+                </form>
+
+                 <hr>
+                 <p class="text-center btn btn-primary w-100 text-center">New Notifications</p>
+                 <hr>
 
 
-              <li class="onhover-dropdown p-0">
+                            @foreach(auth()->user()->unreadNotifications as $notification)
+                            <li class="noti-danger">
 
-              </li>
+                            <div class="media">
+                                <div class="media-body">
 
-            </ul>
+
+                                    <p >{{ $notification->data['data'] }}</p>
+                                </div>
+                            </div>
+                            </li>
+                            @endforeach
+
+
+
+
+                    <hr>
+                    <p class="text-center btn btn-secondary w-100 text-center">Earlier Notifications</p>
+                <hr>
+                @foreach(auth()->user()->readNotifications as $notification)
+                <li class="noti-danger">
+
+                  <div class="media">
+                    <div class="media-body text-center">
+
+
+                       <p >{{ $notification->data['data'] }}</p>
+                    </div>
+                  </div>
+                </li>
+                @endforeach
+
+
+              </ul>
+            <i data-feather="bell"></i>
+             @if (count(auth()->user()->unreadNotifications)>0)
+             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" >{{ count(auth()->user()->unreadNotifications)}}</span>
+            @endif  </li>
+
 
           </ul>
         </div>
@@ -147,54 +190,35 @@
       </div>
     </div>
 
-    {{-- @if (Route::current()->getName() != 'login' && Route::current()->getName() != 'register') --}}
 
-    <div class="page-body-wrapper sidebar-icon">
-      <!-- Page Sidebar Start-->
-      <header class="main-nav">
-
-        <nav>
-          <div class="main-navbar">
-            <div class="left-arrow" id="left-arrow"><i data-feather="arrow-left"></i></div>
-            <div id="mainnav">
-              <ul class="nav-menu custom-scrollbar">
-                <li class="back-btn">
-                  <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
-                </li>
-                <li class="sidebar-main-title">
-                  <div>
-                    <h6>General             </h6>
-                  </div>
-                </li>
-
-
-                <li class="sidebar-main-title">
-                  <div>
-                    <h6>Components             </h6>
-                  </div>
-                </li>
-                <li class="dropdown"><a class="nav-link menu-title" href="/student"><i data-feather="box"></i><span>Student</span></a>
-                  <ul class="nav-submenu menu-content">
-                    <li><a href="/student">profile</a></li>
-                    <li><a href="/student/groups">Groups</a></li>
-                    <li><a href="/student/2/edit">Edit Profile</a></li>
-              </ul>
-            </div>
-            <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
-          </div>
-        </nav>
-      </header>
       @endif
     <!-- Page Header Ends-->
 
     <div class="page-body-wrapper sidebar-icon">
         <!-- Page Sidebar Start-->
         <header class="main-nav">
-          <div class="sidebar-user text-center"><a class="setting-primary" href="javascript:void(0)"><i data-feather="settings"></i></a><img class="img-90 rounded-circle" src="{{Avatar::create(Auth::user()->name)->toBase64() }}" alt="">
+          <div class="sidebar-user text-center">
+            <form action="{{route('profile')}}" method="post" enctype="multipart/form-data" >
+                @csrf
+           <label for="profile"><i data-feather="camera"></i></label>
+
+            <input hidden name="profile" id="profile" type="file" accept="image/*" onchange="loadFile(event)">
+
+            <script>
+              var loadFile = function(event) {
+                var output = document.getElementById('output');
+                output.src = URL.createObjectURL(event.target.files[0]);
+                output.onload = function() {
+                  URL.revokeObjectURL(output.src) // free memory
+                }
+              };
+            </script>
+            <button type="submit" class=" setting-primary" href="javascript:void(0)"><i data-feather="refresh-ccw"></i></button>
+            <img id="output"  class="img-90 rounded-circle" src=" {{ (Auth::user()->profile_photo)? asset('uploads/profile_images/'.Auth::user()->profile_photo): Avatar::create(Auth::user()->name)->toBase64() }}" alt="">
             <div class="badge-bottom"><span class="badge badge-primary">{{Auth::user()->roles[0]->name}}</span></div><a href="user-profile.html">
               <h6 class="mt-3 f-14 f-w-600">{{Auth::user()->name}}</h6></a>
 
-
+            </form>
           </div>
           <nav>
             <div class="main-navbar">
@@ -223,8 +247,7 @@
 
                   </li>
 
-
-
+                  @role('Admin')
                 <li class="dropdown mb-2"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="airplay"></i><span>Admin</span></a>
                     <ul class="nav-submenu menu-content">
                       <li><a href="{{route('users.index')}}">Manage user</a></li>
@@ -232,6 +255,7 @@
 
                     </ul>
                   </li>
+                  @endrole
                   <li class="dropdown mb-2"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="airplay"></i><span>Manage Curiculum</span></a>
                     <ul class="nav-submenu menu-content">
                         <li><a href="/curriculm2/school" class=" menu-title">School List</a></li>
@@ -264,10 +288,6 @@
                   <li class="sidebar-main-title">
                    <hr>
                   </li>
-
-
-
-
 
 
 

@@ -21,13 +21,13 @@
 
  @if ($message->user->id==Auth::id())
  <li>
-    <div class="message my-message bg-success text-white"><img class="rounded-circle bordered float-start chat-user-img "width="64" src=" {{Avatar::create($message->user->name)->toBase64() }}" width="80" alt="">
+    <div class="message my-message bg-success text-white"><img class="rounded-circle bordered float-start chat-user-img "width="64" src=" {{ ($message->user->profile_photo)? asset('uploads/profile_images/'.$message->user->profile_photo): Avatar::create($message->user->name)->toBase64() }} " width="80" alt="">
         {{ $message->user->name }}  <div class="message-data text-end"><span class="message-data-time text-danger">{{ $message->created_at->diffForHumans() }}</span></div>{{ $message->body }}
     </div>
   </li>
   @else
   <li class="clearfix">
-    <div class="message other-message pull-right"><img class="rounded-circle float-end chat-user-img " width="64" src="{{Avatar::create($message->user->name)->toBase64() }}" alt="">
+    <div class="message other-message pull-right"><img class="rounded-circle float-end chat-user-img " width="64" src="{{ ($message->user->profile_photo)? asset('uploads/profile_images/'.$message->user->profile_photo): Avatar::create($message->user->name)->toBase64() }}" alt="">
         {{ $message->user->name }} <div class="message-data"><span class="message-data-time">{{ $message->created_at->diffForHumans() }}</span></div>       {{ $message->body }}
     </div>
   </li>
