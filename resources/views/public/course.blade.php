@@ -30,6 +30,7 @@
             </div>
             <div class="file-content">
                 <div class="card">
+                    @role('admin|teacher')
                   <div class="card-header">
                     <div class="media">
 
@@ -43,6 +44,7 @@
                       </div>
                     </div>
                   </div>
+                  @endrole()
 
 
 

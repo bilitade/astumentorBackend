@@ -12,6 +12,8 @@ use Laravel\Sanctum\HasApiTokens;
 use Laravel\Scout\Searchable;
 use Spatie\Permission\Traits\HasRoles;
 use Cmgmyr\Messenger\Traits\Messagable;
+use App\Models\curriculum\department;
+use App\Models\section\section;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -88,9 +90,18 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Resource::class);
 
     }
+    public function department()
+    {
+        return $this->hasOne(department::class, 'admin_id');
+    }
+
     public function members(){
 
         $this->belongsToMany(Member::class);
     }
 
+    public function sections()
+    {
+        return $this->belongsToMany(Section::class);
+    }
 }

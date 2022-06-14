@@ -20,6 +20,12 @@ return new class extends Migration
             $table->text("vm");
             $table->text("description");
             $table->timestamps();
+            $table->unsignedBigInteger('admin_id')->nullable();
+            $table->foreign('admin_id')
+            ->references('id')
+            ->on('users')
+            -> onDelete('cascade') ->onUpdate('cascade');
+
         });
     }
 

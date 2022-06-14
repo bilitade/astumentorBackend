@@ -10,6 +10,12 @@ use Illuminate\Http\Request;
 class FullCalenderController extends Controller
 {
 
+    public  function  __construct()
+
+    {
+   $this->middleware(['role:student Union|department|school'])->only('action');
+    }
+
     public function index(Request $request)
     {
     	if($request->ajax())

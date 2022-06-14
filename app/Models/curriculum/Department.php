@@ -4,7 +4,7 @@ namespace App\Models\curriculum;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\user;
 class Department extends Model
 {
     use HasFactory;
@@ -18,6 +18,8 @@ class Department extends Model
     public function years(){
         return $this->hasMany(Year::class);
     }
-
+    public function user(){
+        return $this->belongsTo(user::class, 'admin_id', 'id');
+    }
 
 }

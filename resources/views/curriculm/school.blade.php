@@ -35,6 +35,7 @@
                             <th>title</th>
                             <th>Vision And Mission</th>
                             <th>description</th>
+                            <th>Managed By</th>
                             <th>Action</th>
 
                           </tr>
@@ -48,6 +49,58 @@
                             <td>{{ $item->title }}</td>
                             <td>{!! $item->vm !!}</td>
                             <td>{!!$item->description!!}</td>
+                           <td> @empty($item->user->name)
+                            <P>Not Assigned</P>
+                            <button class="btn btn-primary" type="button" data-bs-toggle="modal"
+                                                    data-original-title="test"
+                                                    data-bs-target="#exampleModal">Assign</button>
+                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Assign
+                                                                    Manager of School</h5>
+                                                                <button class="btn-close" type="button"
+                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form class="row needs-validation"
+                                                                    action="{{ route('curriculm2.store') }}" novalidate=""
+                                                                    method="POST">
+
+                                                                    @csrf
+                                                                    <div class="form-group">
+                                                                        <label for="validationCustom01">Slect User:</label>
+                                                                        <select class="form-control"
+                                                                            id="validationCustom01" name="admin_id"
+                                                                            placeholder="school ...." required="">
+                                                                            @foreach ($user as $use)
+                                                                                <option value="{{ $use->id }}">
+                                                                                    {{ $use->name }}</option>
+                                                                            @endforeach
+                                                                        </select>
+                                                                        <div class="valid-feedback">Looks good!</div>
+                                                                    </div>
+                                                                    <input type="hidden" value="{{ $item->id }}"
+                                                                        name="school_id">
+                                                                    <input type="hidden" value="assign_school_manager"
+                                                                        name="type">
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button class="btn btn-primary" type="button"
+                                                                    data-bs-dismiss="modal">Close</button>
+                                                                <button class="btn btn-secondary" type="submit">Save
+                                                                    </button>
+                                                            </div>
+                                                        </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                            @else
+                            {{ $item->user->name  }}
+                     @endempty </td>
+
                             <td><a class="btn btn-primary m-2 pull-left"
                               href="/curriculm2/school{{$item->id}}/edit">Edit</a></td>
 

@@ -15,15 +15,19 @@ class RolePermissionSeeder extends Seeder
     public function run()
     {
         Role::updateOrCreate(
-            ['name' => "Admin"],
+            ['name' => "admin"],
 
         );
         Role::updateOrCreate(
-            ['name' => "Student Union"]
+            ['name' => "student Union"]
 
         );
         Role::updateOrCreate(
-            ['name' => "Department"]
+            ['name' => "department"]
+
+        );
+        Role::updateOrCreate(
+            ['name' => "school"]
 
         );
         Role::updateOrCreate(
@@ -31,7 +35,7 @@ class RolePermissionSeeder extends Seeder
 
         );
         Role::updateOrCreate(
-            ['name' => "Teacher"]
+            ['name' => "teacher"]
 
         );
 

@@ -28,6 +28,7 @@ class SchoolSeeder extends Seeder
         DB::table('schools')->insert([
             'id' => 2,
             'name' => "SOEEC",
+            
             'vm'=>"<br>
             <strong>Vision</strong>
             <br>

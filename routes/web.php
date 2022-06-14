@@ -9,6 +9,7 @@ use App\Http\Controllers\WebCommentController;
 use App\Http\Controllers\FullCalenderController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\GroupController;
+use App\Http\Controllers\SectionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,6 +86,9 @@ Route::group(['middleware' => 'verified'], function () {
 
 Route::resource('newsfeed',WebNewsFeedController::class);
 Route::post('newsfeed/{id}/likes', [WebNewsFeedController::class, 'likeOrUnlike'])->name('likes'); // like or dislike back a post
+Route::resource('schedule',App\Http\Controllers\ScheduleController::class);
+Route::resource('section',App\Http\Controllers\SectionController::class);
+
 
 Route::get('/newsfeed/{id}/comments', [WebCommentController::class, 'index'])->name('newsfeed.comments'); // all comments of a post
 Route::post('/newsfeed/{id}/comments', [WebCommentController::class, 'store'])->name('newsfeed.comments.store'); // create comment on a post
@@ -101,3 +105,6 @@ Route::resource('groups',Groupcontroller::class);
 Route::get('groupjoin/{id}',[Groupcontroller::class, 'join'])->name('join');
 Route::get('allgroups',[Groupcontroller::class, 'groups'])->name('allgroups');
 Route::get('groups/{id}/leave',[Groupcontroller::class, 'leave'])->name('leave');
+
+Route::get('allsection/{id}',[SectionController::class,'showgroup' ])->name('single-section');
+Route::get('allsection',[SectionController::class, 'groups'])->name('allsection');

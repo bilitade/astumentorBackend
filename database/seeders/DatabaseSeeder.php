@@ -19,15 +19,15 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         $this->call([
-            SchoolSeeder::class,
+            RolePermissionSeeder::class,
+            UserSeeder::class,
+             SchoolSeeder::class,
              YearSeeder::class,
-           SemesterSeeder::class,
+             SemesterSeeder::class,
              TypeSeeder::class,
-
             DepartmentSeeder::class,
             CourseSeeder::class,
-            RolePermissionSeeder::class,
-            UserSeeder::class
+
         ]);
 
 

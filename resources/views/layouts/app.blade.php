@@ -247,8 +247,8 @@
 
                   </li>
 
-                  @role('Admin')
-                <li class="dropdown mb-2"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="user-check"></i><span>Admin</span></a>
+                  @role('admin')
+                <li class="dropdown mb-2"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="user-check"></i><span> Manage Role and User</span></a>
                     <ul class="nav-submenu menu-content">
                       <li><a href="{{route('users.index')}}">Manage user</a></li>
                       <li><a href="{{route('users.create')}}">Add user</a></li>
@@ -256,6 +256,7 @@
                     </ul>
                   </li>
                   @endrole
+                  @role('school|department|admin|teacher')
                   <li class="dropdown mb-2"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="book-open"></i><span>Manage Curriculum</span></a>
                     <ul class="nav-submenu menu-content">
                         <li><a href="/curriculm2/school" class=" ">School List</a></li>
@@ -274,7 +275,8 @@
                         <li><a href="/curriculm2/Createyear" class="">Year Create</a></li>
                     </ul>
                   </li>
-
+                  @endrole
+                    @role('student Union')
                   <li class="dropdown mb-2"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="users"></i><span>Manage Groups</span></a>
                     <ul class="nav-submenu menu-content">
                       <li><a href="{{route('groups.index')}}">Groups</a></li>
@@ -282,6 +284,36 @@
 
                     </ul>
                   </li>
+                  @endrole
+
+
+                   @role('department')
+                  <li class="dropdown mb-2"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="home"></i><span>Sections</span></a>
+                    <ul class="nav-submenu menu-content">
+                      <li><a href="{{route('allsection')}}">Sections</a></li>
+                      <li><a href="{{route('section.index')}}">Manage Section</a></li>
+                      <li><a href="{{route('section.create')}}">Create Section  </a></li>
+
+                    </ul>
+                  </li>
+                  @endrole()
+                  @role('admin|student|teacher')
+                  <li class="dropdown"><a class="nav-link menu-title link-nav" href="/section/join" ><i data-feather="plus-circle"></i><span>join section</span></a></li>
+                  <li class="dropdown"><a class="nav-link menu-title link-nav" href="{{route('allsection')}}" ><i data-feather="book"></i><span>My sections</span></a></li>
+
+                  @endrole()
+
+                  <li class="dropdown mb-2"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="clipboard"></i><span>Schedule</span></a>
+                    <ul class="nav-submenu menu-content">
+                      <li><a href="{{route('schedule.index')}}">Schedule</a></li>
+
+                      @role('department')
+
+                      <li><a href="{{route('schedule.create')}}">Create Schedule  </a></li>
+                      @endrole
+                    </ul>
+                  </li>
+
 
 
                   <li class=""><a class=" menu-title" href="{{route('allgroups')}}"><i  data-feather="trello"></i><span class="ml-2">Groups</span></a>

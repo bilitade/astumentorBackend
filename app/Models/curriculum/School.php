@@ -4,6 +4,7 @@ namespace App\Models\curriculum;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 
 use App\Models\curriculum\Department;
 use App\Models\curriculum\Course;
@@ -12,7 +13,7 @@ class School extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name','description','vm','title'];
+    protected $fillable = ['name','description','vm','title', 'admin_id'];
 
 
     public function departments(){
@@ -27,6 +28,10 @@ class School extends Model
     public function years(){
 
         return $this->hasMany(Course::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'admin_id', 'id');
     }
 
 

@@ -10,6 +10,7 @@ use App\Models\curriculum\Type;
 use App\Models\curriculum\Semester;
 use App\Models\curriculum\Resource;
 use App\Models\curriculum\Year;
+use App\Models\User;
 
 class CurriculumController extends Controller
 {
@@ -60,6 +61,15 @@ class CurriculumController extends Controller
         Year::create($request->all()+ ['id' => $request->name]);
        return redirect()->back()->withInput();
       break;
+      case 'assign_department_manager':
+        department::where('id', $request->department_id)->update(['admin_id'=>$request->admin_id]);
+       return redirect()->back()->withInput();
+      break;
+      case 'assign_school_manager':
+        
+        school::where('id', $request->school_id)->update(['admin_id'=>$request->admin_id]);
+       return redirect()->back()->withInput();
+      break;
       default:
        school::create($request->all());
        return redirect()->back()->withInput();
@@ -82,12 +92,13 @@ class CurriculumController extends Controller
         return view("curriculm.createtype");
        }
        if ($id  == 'schoolCreate') {
-        $school = school::all();
-        return view("curriculm.schoolcreate");
+        $user =  User::role('school')->get();
+        return view("curriculm.schoolcreate", compact('user'));
        }
        if ($id  == 'departmentCreate') {
+        $user =  User::role('department')->get();
           $school = school::all();
-        return view("curriculm.departmentCreate", \compact('school'));
+        return view("curriculm.departmentCreate", \compact('school','user'));
        }
        if ($id  == 'Createyear') {
         return view("curriculm.Createyear");
@@ -120,12 +131,14 @@ class CurriculumController extends Controller
         return view("curriculm.type",\compact('type'));
        }
        if ($id  == 'school') {
+        $user =  User::role('school')->get();;
         $school = school::all();
-        return view("curriculm.school", \compact('school'));
+        return view("curriculm.school", \compact('school','user'));
        }
        if ($id  == 'department') {
+        $user =  User::role('Department')->get();;
           $Department = department::all();
-        return view("curriculm.department", \compact('Department'));
+        return view("curriculm.department", \compact('Department','user'));
        }
        if ($id  == 'semister') {
           $semister = semester::all();

@@ -47,7 +47,7 @@
                             <div class="valid-feedback">Looks good!</div>
                           </div>
                         </div>
-                        
+
                         @if (!empty($department))
                         <div class="form-group">
                             <label class="d-block">School:</label>
@@ -71,9 +71,18 @@
                             </select>
                           </div>
                           @endif
+                          @if (empty($department))
+                          <div class="form-group">
+                            <label for="validationCustom01">Assign manager:</label>
+                            <select class="form-control" id="validationCustom01" name="admin_id"   placeholder="school ...." required="">
+                                @foreach ($user as $item)
 
-
-
+                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                            <div class="valid-feedback">Looks good!</div>
+                          </div>
+@endif
                         <input type="hidden" name="id" value="{{isset($school) ? $school[0]->id:'' }}">
 
                         <input type="hidden" name="type" value="dep">

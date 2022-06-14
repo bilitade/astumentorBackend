@@ -55,6 +55,18 @@
                             <textarea class="form-control ckeditor"     name="vm"  required > {!! old('vm', isset($school) ? $school[0]->vm : '') !!}</textarea>
                             <div class="valid-feedback">Looks good!</div>
                           </div>
+                          @if (empty($school))
+                          <div class="form-group">
+                            <label for="validationCustom01">Assign Manager:</label>
+                            <select class="form-control" id="validationCustom01" name="admin_id"   placeholder="school ...." required="">
+                                @foreach ($user as $item)
+
+                                <option value="{{ $item->id }}">{{ $item->name }}</option>
+                                @endforeach
+                            </select>
+                            <div class="valid-feedback">Looks good!</div>
+                          </div>
+                          @endif
                         </div>
                         <input type="hidden" name="type" value="school">
                         <input type="hidden" name="id" value="{{isset($school) ? $school[0]->id:'' }}">

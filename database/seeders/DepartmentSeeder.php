@@ -21,7 +21,9 @@ class DepartmentSeeder extends Seeder
             "title"=>"Computer Science and Engineering",
             "objective"=>"",
             "description"=>"",
-            "school_id"=>2
+            "school_id"=>2,
+            "admin_id"=>5,
+
 
         ]);
 
