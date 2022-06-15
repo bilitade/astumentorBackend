@@ -152,7 +152,7 @@
                             <div class="form-group">
                               <label class="d-block">Year</label>
                               <select name="year_id" class=" form-control js-example-placeholder-multiple col-sm-12" >
-                                
+
                                 @foreach ($year as $item)
                                   <option value="{{ $item->id }}"> {{ $item->name }} </option>
                                 @endforeach
@@ -257,29 +257,7 @@
                           </div> --}}
 
 
-                          @if (!empty($course))
-                          <div class="form-group">
-                              <label class="d-block">Resource</label>
-                              <select name="resource_id" class=" form-control js-example-placeholder-multiple col-sm-12" >
-                                <option value="" >none</option>
-                                @foreach ($resource as $item)
-                                  <option value="{{ $item->id }}" {{ ($item->id == $course[0]->resource_id) ? 'selected' : '' }}> {{ $item->name }} </option>
-                                @endforeach
-
-                              </select>
-                            </div>
-
-                            @else
-                            <div class="form-group">
-                              <label class="d-block">Resource:</label>
-                              <select name="resource_id" class=" form-control js-example-placeholder-multiple col-sm-12" >
-                                <option value="">none</option>
-                                @foreach ($resource as $item)
-                                  <option value="{{ $item->id }}"> {{ $item->name }} </option>
-                                @endforeach
-                              </select>
-                            </div>
-                            @endif
+                      
 
 {{--
                           <div class="form-group">

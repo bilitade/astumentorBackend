@@ -17,6 +17,9 @@
                 <div class="media-body">
                   <div class="about">
                     <div class="name">{{ $thread->subject }}  </div>
+                    <p>
+                        <small><strong>chat Members:</strong> {{ $thread->participantsString(Auth::id()) }}</small>
+                    </p>
 
                   </div>
                 </div>
@@ -27,7 +30,7 @@
                 <ul>
                     @each('messenger.partials.messages', $thread->messages, 'message')
 
-                    @include('messenger.partials.form-message')
+                    @include('messenger.partials.single-form-message')
 
 
                 </ul>

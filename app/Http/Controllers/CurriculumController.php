@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\curriculum\Course;
 use App\Models\curriculum\Department;
-use App\Models\curriculum\School as school;
+use App\Models\curriculum\School;
 use App\Models\curriculum\Type;
 use App\Models\curriculum\Semester;
 use App\Models\curriculum\Resource;
@@ -22,7 +22,7 @@ class CurriculumController extends Controller
 
     public function index()
     {
-       $school = school::all();
+       $school = School::all();
         return view("curriculm.createtype", \compact('school'));
     }
 
@@ -62,16 +62,16 @@ class CurriculumController extends Controller
        return redirect()->back()->withInput();
       break;
       case 'assign_department_manager':
-        department::where('id', $request->department_id)->update(['admin_id'=>$request->admin_id]);
+        Department::where('id', $request->department_id)->update(['admin_id'=>$request->admin_id]);
        return redirect()->back()->withInput();
       break;
       case 'assign_school_manager':
-        
-        school::where('id', $request->school_id)->update(['admin_id'=>$request->admin_id]);
+
+        School::where('id', $request->school_id)->update(['admin_id'=>$request->admin_id]);
        return redirect()->back()->withInput();
       break;
       default:
-       school::create($request->all());
+       School::create($request->all());
        return redirect()->back()->withInput();
       }
     }
@@ -97,29 +97,29 @@ class CurriculumController extends Controller
        }
        if ($id  == 'departmentCreate') {
         $user =  User::role('department')->get();
-          $school = school::all();
+          $school = School::all();
         return view("curriculm.departmentCreate", \compact('school','user'));
        }
        if ($id  == 'Createyear') {
         return view("curriculm.Createyear");
        }
        if ($id  == 'Createcourse') {
-          $school = school::all();
+          $school = School::all();
           $type = Type::all();
           $department = Department::all();
           $year = year::all();
-          $semester = semester::all();
-          $resource = resource::all();
+          $semester = Semester::all();
+          $resource = Resource::all();
         return view("curriculm.coursecreate", \compact('school','type','department','year','semester','resource'));
        }
 
 
        if ($id  == 'resource') {
-        $resource = resource::all();
+        $resource = Resource::all();
         return view("curriculm.resource",\compact('resource'));
        }
        if ($id  == 'year') {
-        $years = year::all();
+        $years = Year::all();
         return view("curriculm.years",\compact('years'));
        }
        if ($id  == 'semester') {
@@ -132,16 +132,16 @@ class CurriculumController extends Controller
        }
        if ($id  == 'school') {
         $user =  User::role('school')->get();;
-        $school = school::all();
+        $school = School::all();
         return view("curriculm.school", \compact('school','user'));
        }
        if ($id  == 'department') {
         $user =  User::role('Department')->get();;
-          $Department = department::all();
+          $Department = Department::all();
         return view("curriculm.department", \compact('Department','user'));
        }
        if ($id  == 'semister') {
-          $semister = semester::all();
+          $semister = Semester::all();
         return view("curriculm.semster", \compact('semister'));
        }
        if ($id  == 'allcourse') {
@@ -163,42 +163,42 @@ class CurriculumController extends Controller
         }
       if (str_contains($id, 'school')) {
         $words = explode('school', $id);
-        $school = school::where('id',$words[1])->get();
+        $school = School::where('id',$words[1])->get();
         return view("curriculm.schoolcreate",\compact('school'));
         }
       if (str_contains($id, 'dep')) {
         $words = explode('dep', $id);
-        $school = school::all();
-        $department = department::where('id',$words[1])->get();
+        $school = School::all();
+        $department = Department::where('id',$words[1])->get();
 
         return view("curriculm.departmentcreate", \compact('department','school'));
         }
       if (str_contains($id, 'semi')) {
         $words = explode('semi', $id);
-        $semester = semester::where('id',$words[1])->get();
+        $semester = Semester::where('id',$words[1])->get();
         return view("curriculm.createsemester",\compact('semester'));
         }
       if (str_contains($id, 'res')) {
         $words = explode('res', $id);
-        $resource1 = resource::where('id',$words[1])->get();
+        $resource1 = Resource::where('id',$words[1])->get();
         return view("curriculm.createresource",\compact('resource1'));
         }
       if (str_contains($id, 'yer')) {
         $words = explode('yer', $id);
-        $year1 = year::where('id',$words[1])->get();
+        $year1 = Year::where('id',$words[1])->get();
         return view("curriculm.createyear",\compact('year1'));
         }
 
         if (str_contains($id, 'course')) {
             $words = explode('course', $id);
 
-            $school = school::all();
+            $school = School::all();
             $type = Type::all();
             $department = Department::all();
-            $year = year::all();
-            $semester = semester::all();
-            $resource = resource::all();
-            $course = course::where('id',$words[1])->get();
+            $year = Year::all();
+            $semester = Semester::all();
+            $resource = Resource::all();
+            $course = Course::where('id',$words[1])->get();
             return view("curriculm.coursecreate",\compact('school','type','department','year','semester','resource','course'));
             }
 
@@ -211,7 +211,7 @@ class CurriculumController extends Controller
 
       switch ($request->type) {
         case 'dep':
-        department::where('id',$request->id)->update(['name'=>$request->name ,'title'=>$request->title,
+        Department::where('id',$request->id)->update(['name'=>$request->name ,'title'=>$request->title,
         'description'=>$request->description,'school_id'=>$request->school_id,
         'objective'=>$request->objective]);
        return redirect()->back()->withInput();
@@ -221,7 +221,7 @@ class CurriculumController extends Controller
        return redirect()->back()->withInput();
       break;
       case 'school':
-        school::where('id',$request->id)->update(['name'=>$request->name ,'title'=>$request->title, 'description'=>$request->description,'vm'=>$request->vm]);
+        School::where('id',$request->id)->update(['name'=>$request->name ,'title'=>$request->title, 'description'=>$request->description,'vm'=>$request->vm]);
        return redirect()->back()->withInput();
       break;
       case 'semster':
@@ -235,7 +235,7 @@ class CurriculumController extends Controller
             'description' => 'required',
 
         ]);
-        course::where('id',$request->id)->update([
+        Course::where('id',$request->id)->update([
             'courseName'=>$request->courseName ,
             'courseCode'=>$request->courseCode,
             'creditHour'=>$request->creditHour,
@@ -252,11 +252,11 @@ class CurriculumController extends Controller
        return redirect()->back()->withInput();
       break;
       case 'year1':
-        year::where('id',$request->id)->update(['name'=>$request->name,'yearInNum'=>$request->yearInNum]);
+        Year::where('id',$request->id)->update(['name'=>$request->name,'yearInNum'=>$request->yearInNum]);
        return redirect()->back()->withInput();
       break;
       default:
-       school::create($request->all());
+       School::create($request->all());
        return redirect()->back()->withInput();
       }
 

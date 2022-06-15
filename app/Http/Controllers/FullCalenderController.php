@@ -13,7 +13,7 @@ class FullCalenderController extends Controller
     public  function  __construct()
 
     {
-   $this->middleware(['role:student Union|department|school'])->only('action');
+   $this->middleware(['role:student Union|department|school|admin'])->only('action');
     }
 
     public function index(Request $request)

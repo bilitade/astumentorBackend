@@ -7,16 +7,15 @@ use App\Models\section\section_user;
 use Illuminate\Http\Request;
 use App\Models\curriculum\Semester;
 use App\Models\curriculum\Year;
-use App\Models\curriculum\school;
-use App\Models\curriculum\department;
-use App\Models\schedule;
+use App\Models\curriculum\School;
+use App\Models\curriculum\Department;
 use Illuminate\Support\Facades\Auth;
 
 class SectionController extends Controller
 {
     public function showgroup($id){
 
-        $section=Section::find($id);
+        $section=section::find($id);
         $schedule = $section->schedule()->get();
 
           return view('sectiongroup.sectionFeed')->with(['group'=>$section, 'schedule'=>$schedule]);
@@ -29,7 +28,7 @@ class SectionController extends Controller
     }
 
     public function groups(){
-        $group = Section::with('users')->get();
+        $group = section::with('users')->get();
 
 
 // dd($group);
@@ -49,8 +48,8 @@ class SectionController extends Controller
 
     public function create()
     {
-        $year = year::all();
-        $semester = semester::all();
+        $year = Year::all();
+        $semester = Semester::all();
        return view('section.create', \compact('year','semester'));
     }
 
@@ -82,7 +81,7 @@ class SectionController extends Controller
             'number' => 'required|numeric',
         ]);
        $department_id =Auth::user()->load(['department'])->department->id;
-       $school_id = department::where('id', $department_id)->get('school_id');
+       $school_id = Department::where('id', $department_id)->get('school_id');
       $school_id = $school_id[0]->school_id;
         for ($i=1; $i <= $request->number; $i++) {
 
@@ -98,7 +97,7 @@ class SectionController extends Controller
     public function show($section)
     {
         if ($section == 'join') {
-            $school = school::with('departments')->get();
+            $school = School::with('departments')->get();
             return view('section.schoolform',\compact('school'));
         }
     }

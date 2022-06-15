@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Spatie\Permission\Models\Role;
-use Symfony\Component\HttpKernel\Profiler\Profile;
+
 
 class UserController extends Controller
 {

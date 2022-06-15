@@ -15,6 +15,7 @@
                     @endif
 
                     {{ __('Before proceeding, please check your email for a verification link.') }}
+                    Note : If you did not find any new email, please check spam folder , It might have been blocked!
                     {{ __('If you did not receive the email') }},
                     <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
                         @csrf

@@ -8,6 +8,12 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -16,6 +22,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
 
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/fontawesome.css')}}">
     <!-- ico-font-->
@@ -39,6 +46,11 @@
     <link id="color" rel="stylesheet" href="{{asset('assets/css/color-1.css')}}" media="screen">
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="{{asset('assets/css/responsive.css')}}">
+    <link
+    rel="stylesheet"
+    type="text/css"
+    href="//github.com/downloads/lafeber/world-flags-sprite/flags32.css"
+/>
 
 
     <script src="{{asset("assets/js/jquery-3.5.1.min.js")}}"></script>
@@ -248,7 +260,7 @@
                   </li>
 
                   @role('admin')
-                <li class="dropdown mb-2"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="user-check"></i><span> Manage Role and User</span></a>
+                <li class="dropdown mb-2"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="user-check"></i><span> Manage  User</span></a>
                     <ul class="nav-submenu menu-content">
                       <li><a href="{{route('users.index')}}">Manage user</a></li>
                       <li><a href="{{route('users.create')}}">Add user</a></li>
@@ -257,7 +269,8 @@
                   </li>
                   @endrole
                   @role('school|department|admin|teacher')
-                  <li class="dropdown mb-2"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="book-open"></i><span>Manage Curriculum</span></a>
+                  <li class="dropdown mb-2">
+                    <a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="book-open"></i><span>Manage Curriculum</span></a>
                     <ul class="nav-submenu menu-content">
                         <li><a href="/curriculm2/school" class=" ">School List</a></li>
                         <li><a href="/curriculm2/schoolCreate" class=" ">School Create</a></li>
@@ -267,8 +280,6 @@
                         <li><a href="/curriculm2/TypeCreate" class="">Type Create</a></li>
                         <li><a href="/curriculm2/semister" class=" ">semester</a></li>
                         <li><a href="/curriculm2/semesterCreate" class="">semester Create</a></li>
-                        <li><a href="/curriculm2/resource" class="">resource </a></li>
-                        <li><a href="/curriculm2/resourceCreate" class="">resource Create</a></li>
                         <li><a href="/curriculm2/Createcourse" class=" ">Cource Create</a></li>
                         <li><a href="/curriculm2/allcourse" class=" ">Cource list</a></li>
                         <li><a href="/curriculm2/year" class=" ">Year</a></li>
@@ -297,7 +308,7 @@
                     </ul>
                   </li>
                   @endrole()
-                  @role('admin|student|teacher')
+                  @role('student|teacher')
                   <li class="dropdown"><a class="nav-link menu-title link-nav" href="/section/join" ><i data-feather="plus-circle"></i><span>join section</span></a></li>
                   <li class="dropdown"><a class="nav-link menu-title link-nav" href="{{route('allsection')}}" ><i data-feather="book"></i><span>My sections</span></a></li>
 
@@ -373,9 +384,11 @@
       <footer class="footer text-center fixed-bottom">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-md-6 footer-copyright">
-              <p class="mb-0">Copyright 2022 © ASTU MENTOR</p>
+            <div class="col footer-copyright">
+              <p class="mb-0">© ASTU-MENTOR</p>
+              Made with <i  style="color: #e25555;" class="icon ion-heart"></i> in  <a href="https://www.astu.edu.et/">ASTU</a>, Adama, Ethiopia
             </div>
+
 
           </div>
         </div>
@@ -401,7 +414,7 @@
     <script src="{{asset('assets/js/bootstrap/popper.min.js')}}"></script>
     <script src="{{asset('assets/js/bootstrap/bootstrap.min.js')}}"></script>
     <!-- Plugins JS start-->
-    <script src="{{asset('assets/js/tooltip-init.js')}}"></script>
+
     <!-- Plugins JS Ends-->
     <!-- Theme js-->
     @yield('js')
